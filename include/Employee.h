@@ -31,17 +31,22 @@ class Employee {
     void setPayment(int payment);
     void setWorkTime(size_t newWorkTime);
 
-private:
-    int id;
+    virtual void calculateSalary() = 0;
+    virtual void printInfo() = 0;
+
+ protected:
     std::string name;
     Position position;
     size_t worktime;
     int payment;
 
     std::chrono::time_point<
-        std::chrono::system_clock,
-        std::chrono::duration<double>
+            std::chrono::system_clock,
+            std::chrono::duration<double>
     > joinDate;
+
+ private:
+    int id;
     static std::set<int> occupiedIDs;
     static bool isNameCorrect(const std::string& str);
 };
