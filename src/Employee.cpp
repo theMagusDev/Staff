@@ -12,7 +12,6 @@ Employee::Employee(
         Position position
 ) : id(id), name(name), position(position) {
     this->payment = -1;
-    this->joinDate = std::chrono::system_clock::now();
     if (Employee::isNameCorrect(name)) {
         this->name = name;
     } else {

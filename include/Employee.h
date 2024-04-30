@@ -40,11 +40,6 @@ class Employee {
     size_t worktime;
     int payment;
 
-    std::chrono::time_point<
-            std::chrono::system_clock,
-            std::chrono::duration<double>
-    > joinDate;
-
  private:
     int id;
     static std::set<int> occupiedIDs;
