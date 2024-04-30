@@ -10,4 +10,5 @@ add_executable(Staff src/main.cpp
         src/Project.cpp
         include/Project.h
         src/ProjectManager.cpp
-        include/ProjectManager.h)
+        include/ProjectManager.h
+        include/Salary.h)

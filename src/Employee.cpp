@@ -12,6 +12,7 @@ Employee::Employee(
         Position position
 ) : id(id), name(name), position(position) {
     this->payment = -1;
+    this->worktime = 0;
     if (Employee::isNameCorrect(name)) {
         this->name = name;
     } else {
