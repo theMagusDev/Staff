@@ -6,4 +6,8 @@ set(CMAKE_CXX_STANDARD 17)
 add_executable(Staff src/main.cpp
         src/Employee.cpp
         include/Employee.h
-        include/Exception.h)
+        include/Exception.h
+        src/Project.cpp
+        include/Project.h
+        src/ProjectManager.cpp
+        include/ProjectManager.h)

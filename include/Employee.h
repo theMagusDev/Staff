@@ -25,7 +25,7 @@ class Employee {
     void setId(int id);
     const std::string& getName() const;
     void setName(const std::string& newName);
-    Position getPosition() const;
+    const std::string& getPosition() const;
     void setPosition(Position position);
     int getPayment() const;
     void setPayment(int payment);

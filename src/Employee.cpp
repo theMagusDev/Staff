@@ -23,15 +23,16 @@ Employee::Employee(
 }
 
 Employee::Employee(
-        int id,
-        const std::string& name,
-        Position position,
-        size_t worktime
+    int id,
+    const std::string& name,
+    Position position,
+    size_t worktime
 ) : Employee(id, name, position) {
     this->worktime = worktime;
 }
 
 Employee::~Employee() {
+    occupiedIDs.erase(this->id);
     this->id = -1;
     this->name.clear();
     this->position = Position::UNINITIALIZED;
@@ -47,8 +48,27 @@ void Employee::setName(const std::string& newName) {
     this->name = newName;
 }
 
-Position Employee::getPosition() const {
-    return position;
+const std::string& Employee::getPosition() const {
+    switch (this->position) {
+        case (Position::TEAM_LEADER):
+            return *(new std::string("Team leader"));
+        case Position::UNINITIALIZED:
+            return *(new std::string("Not initialized"));
+        case Position::PROGRAMMER:
+            return *(new std::string("Programmer"));
+        case Position::TESTER:
+            return *(new std::string("Tester"));
+        case Position::PROJECT_MANAGER:
+            return *(new std::string("Project manager"));
+        case Position::SENIOR_MANAGER:
+            return *(new std::string("Senior manager"));
+        case Position::DRIVER:
+            return *(new std::string("Driver"));
+        case Position::CLEANER:
+            return *(new std::string("Cleaner"));
+        default:
+            return *(new std::string("Unknown"));
+    }
 }
 
 void Employee::setPosition(Position newPosition) {
@@ -78,7 +98,7 @@ void Employee::setId(int newId) {
             std::cerr << "Error in employee " << getName()
                       << ": duplicated employee ID" << std::endl;
         } else {
-            std::cerr << "Error in student " << getName()
+            std::cerr << "Error in employee " << getName()
                       << ": employee ID mustn't be negative" << std::endl;
         }
     }
