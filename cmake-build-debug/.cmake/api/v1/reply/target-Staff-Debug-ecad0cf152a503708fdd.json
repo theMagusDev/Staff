@@ -107,7 +107,8 @@
 				5,
 				7,
 				8,
-				9
+				9,
+				10
 			]
 		}
 	],
@@ -165,6 +166,11 @@
 		{
 			"backtrace" : 1,
 			"path" : "include/WorkBaseTime.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "include/ProjectBudget.h",
 			"sourceGroupIndex" : 1
 		}
 	],
