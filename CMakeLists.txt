@@ -11,5 +11,5 @@ add_executable(Staff src/main.cpp
         include/Project.h
         src/ProjectManager.cpp
         include/ProjectManager.h
-        include/Salary.h
-        include/Heading.h)
+        include/Heading.h
+        include/WorkBaseTime.h)
