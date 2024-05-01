@@ -23,7 +23,7 @@ ProjectManager::ProjectManager(
         int id,
         const std::string& name,
         Position position,
-        size_t worktime
+        int worktime
 ) : Employee(id, name, position, worktime) {
     projects = *(new std::vector<Project*>(1));
 }
@@ -32,7 +32,7 @@ ProjectManager::ProjectManager(
         int id,
         const std::string& name,
         Position position,
-        size_t worktime,
+        int worktime,
         Project& project
 ) : ProjectManager(id, name, position, worktime) {
     projects[0] = &project;

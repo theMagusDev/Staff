@@ -10,15 +10,15 @@ class Project {
 
     int getId() const;
     void setId(int id);
-    unsigned int getBudget() const;
+    int getBudget() const;
     void setBudget(unsigned int budget);
-    unsigned int getNumberOfEmployees() const;
+    int getNumberOfEmployees() const;
     void setNumberOfEmployees(unsigned int numberOfEmployees);
 
 private:
     int id;
-    unsigned int budget;
-    unsigned int numberOfEmployees;
+    int budget;
+    int numberOfEmployees;
 
     static std::set<int> occupiedIDs;
 };

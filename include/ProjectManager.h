@@ -11,12 +11,12 @@ class ProjectManager : protected Employee, public Heading {
  public:
     ProjectManager(int id, const std::string& name, Position position);
     ProjectManager(int id, const std::string& name, Position position, Project& project);
-    ProjectManager(int id, const std::string& name, Position position, size_t worktime);
-    ProjectManager(int id, const std::string& name, Position position, size_t worktime, Project& project);
+    ProjectManager(int id, const std::string& name, Position position, int worktime);
+    ProjectManager(int id, const std::string& name, Position position, int worktime, Project& project);
 
     int calcHeads() override;
 
-private:
+ private:
     std::vector<Project*> projects;
 };
 

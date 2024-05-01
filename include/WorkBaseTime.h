@@ -5,7 +5,7 @@
 
 class WorkBaseTime {
     virtual ~WorkBaseTime() = default;
-    virtual int calcBase(int salary, size_t workTime) = 0;
+    virtual int calcBase(int salary, int workTime) = 0;
 };
 
 #endif //STAFF_WORKBASETIME_H

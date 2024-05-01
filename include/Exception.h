@@ -20,8 +20,29 @@ class EmployeeException: public CustomException {
             CustomException(std::move(message)) {}
 };
 class InvalidNameException: public EmployeeException {
-public:
+ public:
     explicit InvalidNameException(std::string message) :
+            EmployeeException(std::move(message)) {}
+};
+class InvalidEmployeeIDException: public EmployeeException {
+public:
+    explicit InvalidEmployeeIDException(std::string message) :
+            EmployeeException(std::move(message)) {}
+};
+class InvalidWorktimeException: public EmployeeException {
+ public:
+    explicit InvalidWorktimeException(std::string message) :
+            EmployeeException(std::move(message)) {}
+};
+
+class ProjectException: public CustomException {
+ public:
+    explicit ProjectException(std::string message) :
+            CustomException(std::move(message)) {}
+};
+class InvalidProjectIDException: public EmployeeException {
+ public:
+    explicit InvalidProjectIDException(std::string message) :
             EmployeeException(std::move(message)) {}
 };
 

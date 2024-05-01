@@ -3,7 +3,7 @@
 
 class ProjectBudget {
     virtual ~ProjectBudget() = default;
-    virtual int calcBudgetpart(float part, unsigned int budget) = 0;
+    virtual int calcBudgetpart(float part, int budget) = 0;
 };
 
 #endif //STAFF_PROJECTBUDGET_H

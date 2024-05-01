@@ -10,7 +10,8 @@ Employee::Employee(
         int id,
         const std::string& name,
         Position position
-) : id(id), name(name), position(position) {
+) : name(name), position(position) {
+    setId(id);
     this->payment = -1;
     this->worktime = 0;
     if (Employee::isNameCorrect(name)) {
@@ -26,9 +27,9 @@ Employee::Employee(
     int id,
     const std::string& name,
     Position position,
-    size_t worktime
+    int worktime
 ) : Employee(id, name, position) {
-    this->worktime = worktime;
+    setWorkTime(worktime);
 }
 
 Employee::~Employee() {
@@ -95,17 +96,19 @@ void Employee::setId(int newId) {
         Employee::occupiedIDs.insert(newId);
     } else {
         if (IDisOccupied) {
-            std::cerr << "Error in employee " << getName()
-                      << ": duplicated employee ID" << std::endl;
+            throw InvalidEmployeeIDException("Exception in employee " + getName() + ": duplicated employee ID");
         } else {
-            std::cerr << "Error in employee " << getName()
-                      << ": employee ID mustn't be negative" << std::endl;
+            throw InvalidEmployeeIDException("Exception in employee " + getName() + ": employee ID mustn't be negative");
         }
     }
 }
 
-void Employee::setWorkTime(size_t newWorkTime) {
-    this->worktime = newWorkTime;
+void Employee::setWorkTime(int newWorkTime) {
+    if (newWorkTime < 0) {
+        throw InvalidWorktimeException("Work time can not be negative");
+    } else {
+        this->worktime = newWorkTime;
+    }
 }
 
 bool Employee::isNameCorrect(const std::string &str) {

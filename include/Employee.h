@@ -18,7 +18,7 @@ enum class Position {
 class Employee {
  public:
     Employee(int id, const std::string& name, Position position);
-    Employee(int id, const std::string &name, Position position, size_t worktime);
+    Employee(int id, const std::string &name, Position position, int worktime);
     ~Employee();
 
     int getId() const;
@@ -29,7 +29,7 @@ class Employee {
     void setPosition(Position position);
     int getPayment() const;
     void setPayment(int payment);
-    void setWorkTime(size_t newWorkTime);
+    void setWorkTime(int newWorkTime);
 
     virtual void calculateSalary() = 0;
     virtual void printInfo() = 0;
@@ -37,7 +37,7 @@ class Employee {
  protected:
     std::string name;
     Position position;
-    size_t worktime;
+    int worktime;
     int payment;
 
  private:
