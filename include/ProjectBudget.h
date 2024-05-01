@@ -2,6 +2,7 @@
 #define STAFF_PROJECTBUDGET_H
 
 class ProjectBudget {
+ public:
     virtual ~ProjectBudget() = default;
     virtual int calcBudgetpart(float part, int budget) = 0;
 };

@@ -4,6 +4,7 @@
 #include <iostream>
 
 class WorkBaseTime {
+ public:
     virtual ~WorkBaseTime() = default;
     virtual int calcBase(int salary, int workTime) = 0;
 };
