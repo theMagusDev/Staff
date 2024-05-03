@@ -184,7 +184,7 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "src/Personal.h",
+			"path" : "include/Personal.h",
 			"sourceGroupIndex" : 1
 		}
 	],

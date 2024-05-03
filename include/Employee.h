@@ -29,6 +29,7 @@ class Employee {
     void setPosition(Position position);
     int getPayment() const;
     void setPayment(int payment);
+    int getWorkTime() const;
     void setWorkTime(int newWorkTime);
 
     virtual void calculateSalary() = 0;

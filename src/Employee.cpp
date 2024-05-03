@@ -129,3 +129,7 @@ bool Employee::isNameCorrect(const std::string &str) {
 
     return true;
 }
+
+int Employee::getWorkTime() const {
+    return this->worktime;
+}
