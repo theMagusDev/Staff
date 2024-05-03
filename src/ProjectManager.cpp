@@ -56,7 +56,7 @@ int ProjectManager::calculateProAdditions() const {
 }
 
 int ProjectManager::calculateHeads() const {
-    if (projects[0] == nullptr) {
+    if (!hasProject()) {
         return 0;
     }
 

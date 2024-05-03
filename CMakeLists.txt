@@ -17,4 +17,6 @@ add_executable(Staff src/main.cpp
         src/Personal.cpp
         include/Personal.h
         src/Cleaner.cpp
-        include/Cleaner.h)
+        include/Cleaner.h
+        src/SeniorManager.cpp
+        include/SeniorManager.h)
