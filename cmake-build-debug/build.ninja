@@ -79,6 +79,12 @@ build CMakeFiles/Staff.dir/src/Personal.cpp.obj: CXX_COMPILER__Staff_unscanned_D
   OBJECT_DIR = CMakeFiles\Staff.dir
   OBJECT_FILE_DIR = CMakeFiles\Staff.dir\src
 
+build CMakeFiles/Staff.dir/src/Cleaner.cpp.obj: CXX_COMPILER__Staff_unscanned_Debug D$:/Projects/C++/Staff/src/Cleaner.cpp || cmake_object_order_depends_target_Staff
+  DEP_FILE = CMakeFiles\Staff.dir\src\Cleaner.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Staff.dir
+  OBJECT_FILE_DIR = CMakeFiles\Staff.dir\src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Staff
@@ -87,7 +93,7 @@ build CMakeFiles/Staff.dir/src/Personal.cpp.obj: CXX_COMPILER__Staff_unscanned_D
 #############################################
 # Link the executable Staff.exe
 
-build Staff.exe: CXX_EXECUTABLE_LINKER__Staff_Debug CMakeFiles/Staff.dir/src/main.cpp.obj CMakeFiles/Staff.dir/src/Employee.cpp.obj CMakeFiles/Staff.dir/src/Project.cpp.obj CMakeFiles/Staff.dir/src/ProjectManager.cpp.obj CMakeFiles/Staff.dir/src/Personal.cpp.obj
+build Staff.exe: CXX_EXECUTABLE_LINKER__Staff_Debug CMakeFiles/Staff.dir/src/main.cpp.obj CMakeFiles/Staff.dir/src/Employee.cpp.obj CMakeFiles/Staff.dir/src/Project.cpp.obj CMakeFiles/Staff.dir/src/ProjectManager.cpp.obj CMakeFiles/Staff.dir/src/Personal.cpp.obj CMakeFiles/Staff.dir/src/Cleaner.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Staff.dir
