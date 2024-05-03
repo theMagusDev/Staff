@@ -75,3 +75,9 @@ void Project::setNumberOfEmployees(int newNumberOfEmployees) {
         this->numberOfEmployees = newNumberOfEmployees;
     }
 }
+
+void Project::printProjectInfo() {
+    std::cout << "Project #" << getId() << std::endl;
+    std::cout << " Number of employees: "
+        << getNumberOfEmployees() << std::endl;
+}

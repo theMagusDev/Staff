@@ -4,7 +4,7 @@
 class Heading {
  public:
     virtual ~Heading() = default;
-    virtual int calculateHeads() = 0;
+    virtual int calculateHeads() const = 0;
 };
 
 #endif //STAFF_HEADING_H

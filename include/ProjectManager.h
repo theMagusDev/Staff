@@ -20,10 +20,11 @@ class ProjectManager : protected Employee, public Heading, public ProjectBudget 
 
  private:
     std::vector<Project*> projects;
+    bool hasProject() const;
 
-    int calculateHeads() override;
-    int calculateProAdditions() override;
-    int calculateBudgetPart(float part, int budget) override;
+    int calculateHeads() const override;
+    int calculateProAdditions() const override;
+    int calculateBudgetPart(float part, int budget) const override;
 };
 
 

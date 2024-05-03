@@ -32,6 +32,6 @@ void Personal::setSalary(int newSalary) {
     }
 }
 
-int Personal::calcBase() {
+int Personal::calculateBase() const {
     return salary * getWorkTime();
 }

@@ -12,7 +12,7 @@ class Personal : protected Employee, public WorkBaseTime {
     int getSalary() const;
     void setSalary(int newSalary);
 
-    int calcBase() override;
+    int calculateBase() const override;
 
  private:
     int salary;

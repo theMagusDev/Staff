@@ -4,8 +4,8 @@
 class ProjectBudget {
  public:
     virtual ~ProjectBudget() = default;
-    virtual int calculateBudgetPart(float part, int budget) = 0;
-    virtual int calculateProAdditions() = 0;
+    virtual int calculateBudgetPart(float part, int budget) const = 0;
+    virtual int calculateProAdditions() const = 0;
 };
 
 #endif //STAFF_PROJECTBUDGET_H

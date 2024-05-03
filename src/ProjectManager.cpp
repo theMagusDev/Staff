@@ -43,7 +43,7 @@ ProjectManager::ProjectManager(
     projects[0] = &project;
 }
 
-int ProjectManager::calculateProAdditions() {
+int ProjectManager::calculateProAdditions() const {
     bool hasProject = projects[0] != nullptr;
     if (!hasProject) {
         return 0;
@@ -56,7 +56,7 @@ int ProjectManager::calculateProAdditions() {
     }
 }
 
-int ProjectManager::calculateHeads() {
+int ProjectManager::calculateHeads() const {
     if (projects[0] == nullptr) {
         return 0;
     }
@@ -64,7 +64,7 @@ int ProjectManager::calculateHeads() {
     return PAYMENT_PER_PERSON_IN_PROJECT * projects[0]->getNumberOfEmployees();
 }
 
-int ProjectManager::calculateBudgetPart(float part, int budget) {
+int ProjectManager::calculateBudgetPart(float part, int budget) const {
     return std::ceil(static_cast<float>(budget) * part);
 }
 
@@ -89,7 +89,8 @@ void ProjectManager::printInfo() {
     std::cout << " Position: " << getPosition() << std::endl;
     std::cout << " Work time: " << getWorkTime() << std::endl;
     std::cout << " Payment: " << getPayment() << std::endl;
-
+    if (projects[0])
+    std::cout << " Project: " << getPayment() << std::endl;
 }
 
 
