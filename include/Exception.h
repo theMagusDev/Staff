@@ -40,11 +40,22 @@ class ProjectException: public CustomException {
     explicit ProjectException(std::string message) :
             CustomException(std::move(message)) {}
 };
-class InvalidProjectIDException: public EmployeeException {
+class InvalidProjectIDException: public ProjectException {
  public:
     explicit InvalidProjectIDException(std::string message) :
-            EmployeeException(std::move(message)) {}
+            ProjectException(std::move(message)) {}
 };
+class InvalidProjectBudgetException: public ProjectException {
+ public:
+    explicit InvalidProjectBudgetException(std::string message) :
+        ProjectException(std::move(message)) {}
+};
+class InvalidNumberOfEmployeesException: public ProjectException {
+ public:
+    explicit InvalidNumberOfEmployeesException(std::string message) :
+        ProjectException(std::move(message)) {}
+};
+
 
 class PersonalException: public CustomException {
  public:
@@ -56,5 +67,4 @@ public:
     explicit InvalidSalaryException(std::string message) :
             PersonalException(std::move(message)) {}
 };
-
 #endif //STAFF_EXCEPTION_H

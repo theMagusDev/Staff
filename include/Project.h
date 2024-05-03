@@ -5,15 +5,16 @@
 
 class Project {
  public:
-    Project(int id, unsigned int budget, unsigned int numberOfEmployees);
+    Project(int id, int budget, int numberOfEmployees);
     ~Project();
 
     int getId() const;
     void setId(int id);
     int getBudget() const;
-    void setBudget(unsigned int budget);
+    void setBudget(int newBudget);
     int getNumberOfEmployees() const;
-    void setNumberOfEmployees(unsigned int numberOfEmployees);
+    void setNumberOfEmployees(int newNumberOfEmployees);
+    void printProjectInfo();
 
  private:
     int id;

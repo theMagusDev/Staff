@@ -1,14 +1,17 @@
 #include <iostream>
 #include "../include/Project.h"
+#include "../include/Exception.h"
 
 std::set<int> Project::occupiedIDs;
 
 Project::Project(
     int id,
-    unsigned int budget,
-    unsigned int numberOfEmployees
-) : budget(budget), numberOfEmployees(numberOfEmployees) {
+    int budget,
+    int numberOfEmployees
+) {
     setId(id);
+    setBudget(budget);
+    setNumberOfEmployees(numberOfEmployees);
 }
 
 Project::~Project() {
@@ -30,27 +33,45 @@ void Project::setId(int newId) {
         Project::occupiedIDs.insert(newId);
     } else {
         if (IDisOccupied) {
-            std::cerr << "Error in project " << getId()
-                      << ": duplicated project ID" << std::endl;
+            throw InvalidProjectIDException(
+                "Exception in project "
+                + std::to_string( getId())
+                + ": duplicated project ID"
+            );
         } else {
-            std::cerr << "Error in project " << getId()
-                      << ": project ID mustn't be negative" << std::endl;
+            throw InvalidProjectIDException(
+                "Exception in project "
+                + std::to_string(getId())
+                + ": project ID mustn't be negative"
+            );
         }
     }
 }
 
-unsigned int Project::getBudget() const {
+int Project::getBudget() const {
     return budget;
 }
 
-void Project::setBudget(unsigned int budget) {
-    this->budget = budget;
+void Project::setBudget(int newBudget) {
+    if (newBudget < 0) {
+        throw InvalidProjectBudgetException(
+            "Project budget can not be negative"
+        );
+    } else {
+        this->budget = newBudget;
+    }
 }
 
-unsigned int Project::getNumberOfEmployees() const {
+int Project::getNumberOfEmployees() const {
     return this->numberOfEmployees;
 }
 
-void Project::setNumberOfEmployees(unsigned int numberOfEmployees) {
-    this->numberOfEmployees = numberOfEmployees;
+void Project::setNumberOfEmployees(int newNumberOfEmployees) {
+    if (newNumberOfEmployees < 0) {
+        throw InvalidNumberOfEmployeesException(
+            "Employees number can not be negative"
+        );
+    } else {
+        this->numberOfEmployees = newNumberOfEmployees;
+    }
 }
