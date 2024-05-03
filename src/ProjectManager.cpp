@@ -44,8 +44,7 @@ ProjectManager::ProjectManager(
 }
 
 int ProjectManager::calculateProAdditions() const {
-    bool hasProject = projects[0] != nullptr;
-    if (!hasProject) {
+    if (!hasProject()) {
         return 0;
     }
 
@@ -69,7 +68,7 @@ int ProjectManager::calculateBudgetPart(float part, int budget) const {
 }
 
 void ProjectManager::calculatePayment() {
-    if (projects[0] != nullptr) {
+    if (hasProject()) {
         setPayment(
             calculateHeads()
             + calculateProAdditions()
@@ -89,8 +88,14 @@ void ProjectManager::printInfo() {
     std::cout << " Position: " << getPosition() << std::endl;
     std::cout << " Work time: " << getWorkTime() << std::endl;
     std::cout << " Payment: " << getPayment() << std::endl;
-    if (projects[0])
-    std::cout << " Project: " << getPayment() << std::endl;
+    if (hasProject()) {
+        std::cout << " Project: " << std::endl;
+        projects[0]->printProjectInfo();
+    }
+}
+
+bool ProjectManager::hasProject() const {
+    return this->projects[0] != nullptr;
 }
 
 
