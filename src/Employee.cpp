@@ -76,7 +76,10 @@ void Employee::setPosition(Position newPosition) {
     this->position = newPosition;
 }
 
-int Employee::getPayment() const {
+int Employee::getPayment(bool calculateAutomatically) {
+    if (calculateAutomatically) {
+        calculatePayment();
+    }
     return payment;
 }
 

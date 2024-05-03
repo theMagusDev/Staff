@@ -198,7 +198,7 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "src/Cleaner.h",
+			"path" : "include/Cleaner.h",
 			"sourceGroupIndex" : 1
 		}
 	],

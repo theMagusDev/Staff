@@ -5,7 +5,7 @@
 
 class Cleaner : Personal {
  public:
-    void calculateSalary() override;
+    void calculatePayment() override;
 };
 
 

@@ -27,12 +27,12 @@ class Employee {
     void setName(const std::string& newName);
     const std::string& getPosition() const;
     void setPosition(Position position);
-    int getPayment() const;
+    int getPayment(bool calculateAutomatically = true);
     void setPayment(int payment);
     int getWorkTime() const;
     void setWorkTime(int newWorkTime);
 
-    virtual void calculateSalary() = 0;
+    virtual void calculatePayment() = 0;
     virtual void printInfo() = 0;
 
  protected:

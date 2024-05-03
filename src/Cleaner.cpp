@@ -1,5 +1,5 @@
 #include "../include/Cleaner.h"
 
-void Cleaner::calculateSalary() {
+void Cleaner::calculatePayment() {
     setSalary(worktime * payment);
 }
