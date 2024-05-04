@@ -7,6 +7,7 @@ class WorkBaseTime {
  public:
     virtual ~WorkBaseTime() = default;
     virtual int calculateBase() const = 0;
+    virtual int calculateBonus() const = 0;
 };
 
 #endif //STAFF_WORKBASETIME_H

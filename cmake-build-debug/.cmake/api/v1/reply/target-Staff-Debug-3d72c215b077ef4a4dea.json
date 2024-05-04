@@ -212,7 +212,7 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "src/SeniorManager.h",
+			"path" : "include/SeniorManager.h",
 			"sourceGroupIndex" : 1
 		}
 	],

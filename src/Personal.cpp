@@ -4,34 +4,18 @@
 Personal::Personal(
         int id,
         const std::string& name,
-        Position position,
-        int salary
-) : Employee(id, name, position) {
-    setSalary(salary);
-}
+        Position position
+) : Employee(id, name, position) {}
 
 Personal::Personal(
         int id,
         const std::string& name,
         Position position,
-        int worktime,
-        int salary
-) : Personal(id, name, position, salary) {
+        int worktime
+) : Personal(id, name, position) {
     setWorkTime(worktime);
 }
 
-int Personal::getSalary() const {
-    return this->salary;
-}
-
-void Personal::setSalary(int newSalary) {
-    if (newSalary < 0) {
-        throw InvalidSalaryException("Salary mustn't be negative");
-    } else {
-        this->salary = newSalary;
-    }
-}
-
 int Personal::calculateBase() const {
-    return salary * getWorkTime();
+    return payment * getWorkTime();
 }
