@@ -16,57 +16,61 @@ class CustomException : std::exception {
     std::string message;
 };
 
-class EmployeeException: public CustomException {
+class EmployeeException : public CustomException {
  public:
     explicit EmployeeException(std::string message) :
             CustomException(std::move(message)) {}
 };
-class InvalidNameException: public EmployeeException {
+class InvalidNameException : public EmployeeException {
  public:
     explicit InvalidNameException(std::string message) :
             EmployeeException(std::move(message)) {}
 };
-class InvalidEmployeeIDException: public EmployeeException {
+class InvalidEmployeeIDException : public EmployeeException {
 public:
     explicit InvalidEmployeeIDException(std::string message) :
             EmployeeException(std::move(message)) {}
 };
-class InvalidWorktimeException: public EmployeeException {
+class InvalidWorktimeException : public EmployeeException {
  public:
     explicit InvalidWorktimeException(std::string message) :
             EmployeeException(std::move(message)) {}
 };
 
-class ProjectException: public CustomException {
+class ProjectException : public CustomException {
  public:
     explicit ProjectException(std::string message) :
             CustomException(std::move(message)) {}
 };
-class InvalidProjectIDException: public ProjectException {
+class InvalidProjectIDException : public ProjectException {
  public:
     explicit InvalidProjectIDException(std::string message) :
             ProjectException(std::move(message)) {}
 };
-class InvalidProjectBudgetException: public ProjectException {
+class InvalidProjectBudgetException : public ProjectException {
  public:
     explicit InvalidProjectBudgetException(std::string message) :
         ProjectException(std::move(message)) {}
 };
-class InvalidNumberOfEmployeesException: public ProjectException {
+class InvalidNumberOfEmployeesException : public ProjectException {
  public:
     explicit InvalidNumberOfEmployeesException(std::string message) :
         ProjectException(std::move(message)) {}
 };
 
-
-class PersonalException: public CustomException {
+class PersonalException : public CustomException {
  public:
     explicit PersonalException(std::string message) :
             CustomException(std::move(message)) {}
 };
+class InvalidHourlyRateException : public PersonalException {
+ public:
+    explicit InvalidHourlyRateException(std::string message) :
+            PersonalException(std::move(message)) {};
+};
 
 class DriverException: public PersonalException {
-public:
+ public:
     explicit DriverException(std::string message) :
             PersonalException(std::move(message)) {}
 };

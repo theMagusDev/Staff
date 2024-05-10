@@ -38,7 +38,7 @@ class Employee {
  protected:
     std::string name;
     Position position;
-    int worktime;
+    int worktime; // counted in days
     int payment;
 
  private:

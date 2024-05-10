@@ -6,10 +6,16 @@
 
 class Personal : protected Employee, public WorkBaseTime {
  public:
-    Personal(int id, const std::string& name, Position position);
-    Personal(int id, const std::string &name, Position position, int worktime);
+    Personal(int id, const std::string& name, Position position, int hourlyRate);
+    Personal(int id, const std::string &name, Position position, int worktime, int hourlyRate);
+
+    int getHourlyRate() const;
+    void setHourlyRate(int newHourlyRate);
 
     int calculateBase() const override;
+
+ protected:
+    int hourlyRate;
 };
 
 
