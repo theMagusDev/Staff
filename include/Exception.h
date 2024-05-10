@@ -8,7 +8,9 @@
 class CustomException : std::exception {
  public:
     explicit CustomException(std::string message);
-    std::string getMessage() const;
+    const char* what() const noexcept override {
+        return message.c_str();
+    }
 
  private:
     std::string message;
@@ -62,9 +64,15 @@ class PersonalException: public CustomException {
     explicit PersonalException(std::string message) :
             CustomException(std::move(message)) {}
 };
-class InvalidSalaryException: public PersonalException {
+
+class DriverException: public PersonalException {
 public:
-    explicit InvalidSalaryException(std::string message) :
+    explicit DriverException(std::string message) :
             PersonalException(std::move(message)) {}
+};
+class InvalidNightHoursException: public DriverException {
+public:
+    explicit InvalidNightHoursException(std::string message) :
+            DriverException(std::move(message)) {}
 };
 #endif //STAFF_EXCEPTION_H

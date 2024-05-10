@@ -19,4 +19,6 @@ add_executable(Staff src/main.cpp
         src/Cleaner.cpp
         include/Cleaner.h
         src/SeniorManager.cpp
-        include/SeniorManager.h)
+        include/SeniorManager.h
+        src/Driver.cpp
+        include/Driver.h)
