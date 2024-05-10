@@ -5,8 +5,11 @@
 
 class Driver : Personal {
  public:
-    Driver(int id, const std::string& name, int nightHours);
-    Driver(int id, const std::string& name, int worktime, int nightHours;
+    Driver(int id, const std::string& name, int horlyRate);
+    Driver(int id, const std::string& name, int hourlyRate, int nightHours, int worktime);
+
+    int getNightHours() const;
+    void setNightHours(int nightHours);
 
     void calculatePayment() override;
     void printInfo() override;

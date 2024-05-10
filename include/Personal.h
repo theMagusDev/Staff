@@ -7,7 +7,7 @@
 class Personal : protected Employee, public WorkBaseTime {
  public:
     Personal(int id, const std::string& name, Position position, int hourlyRate);
-    Personal(int id, const std::string &name, Position position, int worktime, int hourlyRate);
+    Personal(int id, const std::string &name, Position position, int hourlyRate, int worktime);
 
     int getHourlyRate() const;
     void setHourlyRate(int newHourlyRate);
