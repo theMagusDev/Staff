@@ -17,10 +17,6 @@ void Cleaner::calculatePayment() {
     setPayment(calculateBase() + calculateBonus());
 }
 
-int Cleaner::calculateBase() const {
-    return worktime * payment;
-}
-
 int Cleaner::calculateBonus() const {
     if (worktime > BONUS_WORKTIME_CRITERIA) {
         return 5000;
