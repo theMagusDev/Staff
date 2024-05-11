@@ -14,7 +14,8 @@ class Project {
     void setBudget(int newBudget);
     int getNumberOfEmployees() const;
     void setNumberOfEmployees(int newNumberOfEmployees);
-    void printProjectInfo();
+
+    void printProjectInfo() const;
 
  private:
     int id;

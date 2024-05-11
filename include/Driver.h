@@ -15,7 +15,6 @@ class Driver : public Personal {
     void printInfo() override;
 
  private:
-    int calculateBase() const override;
     int calculateBonus() const override;
 
     int nightHours;
