@@ -14,6 +14,8 @@ class Engineer : public Personal {
 
  private:
     Project* project;
+
+    int calculateBudgetPart() override;
 };
 
 

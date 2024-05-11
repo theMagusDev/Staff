@@ -71,11 +71,11 @@ int SeniorManager::calculateBudgetsPart(float part) const {
         return 0;
     }
 
-    float result = 0;
+    int result = 0;
     for (Project* project : projects) {
-        result += static_cast<float>(project->getBudget()) * part;
+        result += calculateBudgetPart(project);
     }
-    return std::ceil(result);
+    return result;
 }
 
 void SeniorManager::calculatePayment() {
