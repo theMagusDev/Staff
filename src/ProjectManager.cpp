@@ -63,14 +63,8 @@ int ProjectManager::calculateHeads() const {
     return PAYMENT_PER_PERSON_IN_PROJECT * projects[0]->getNumberOfEmployees();
 }
 
-int ProjectManager::calculateBudgetPart(Project* project) const {
-    if (project == nullptr) {
-        return 0;
-    }
-
-    return std::ceil(
-            static_cast<float>(project->getBudget())
-            * PROJECT_MANAGER_PART);
+int ProjectManager::calculateBudgetPart(int budget, float part) const {
+    return std::ceil(static_cast<float>(budget) * part);
 }
 
 void ProjectManager::calculatePayment() {
@@ -78,7 +72,9 @@ void ProjectManager::calculatePayment() {
         setPayment(
             calculateHeads()
             + calculateProAdditions()
-            + calculateBudgetPart(projects[0])
+            + calculateBudgetPart(
+                    projects[0]->getBudget(),
+                    PROJECT_MANAGER_PART)
         );
     } else {
         setPayment(calculateHeads() + calculateProAdditions());

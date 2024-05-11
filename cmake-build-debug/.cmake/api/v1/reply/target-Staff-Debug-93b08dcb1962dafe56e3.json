@@ -240,7 +240,7 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "src/Engineer.h",
+			"path" : "include/Engineer.h",
 			"sourceGroupIndex" : 1
 		}
 	],
