@@ -3,7 +3,7 @@
 
 #include "Personal.h"
 
-class Cleaner : Personal {
+class Cleaner : public Personal {
  public:
     Cleaner(int id, const std::string& name);
     Cleaner(int id, const std::string& name, int worktime);
@@ -12,7 +12,6 @@ class Cleaner : Personal {
     void printInfo() override;
 
  private:
-    int calculateBase() const override;
     int calculateBonus() const override;
 };
 

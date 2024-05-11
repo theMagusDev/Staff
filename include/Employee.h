@@ -35,14 +35,13 @@ class Employee {
     virtual void calculatePayment() = 0;
     virtual void printInfo() = 0;
 
- protected:
+ private:
+    int id;
     std::string name;
     Position position;
     int worktime; // counted in days
     int payment;
 
- private:
-    int id;
     static std::set<int> occupiedIDs;
     static bool isNameCorrect(const std::string& str);
 };

@@ -18,7 +18,7 @@ void Cleaner::calculatePayment() {
 }
 
 int Cleaner::calculateBonus() const {
-    if (worktime > BONUS_WORKTIME_CRITERIA) {
+    if (getWorkTime() > BONUS_WORKTIME_CRITERIA) {
         return 5000;
     } else {
         return 0;
