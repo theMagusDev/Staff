@@ -33,6 +33,8 @@ void Driver::printInfo() {
     std::cout << " ID: " << getId() << std::endl;
     std::cout << " Position: " << getPosition() << std::endl;
     std::cout << " Work time: " << getWorkTime() << std::endl;
+    std::cout << " Night hours: " << getNightHours() << std::endl;
+    std::cout << " Hourly rate: " << getHourlyRate() << std::endl;
     std::cout << " Payment: " << getPayment() << std::endl;
 }
 

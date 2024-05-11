@@ -21,4 +21,6 @@ add_executable(Staff src/main.cpp
         src/SeniorManager.cpp
         include/SeniorManager.h
         src/Driver.cpp
-        include/Driver.h)
+        include/Driver.h
+        src/Engineer.cpp
+        include/Engineer.h)
