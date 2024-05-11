@@ -41,7 +41,7 @@ int Driver::getNightHours() const {
 }
 
 void Driver::setNightHours(int newNightHours) {
-    if (newNightHours > worktime) {
+    if (newNightHours > getWorkTime()) {
         throw InvalidNightHoursException("Night hours can not be more than total worktime");
     }
     if (newNightHours < 0) {
