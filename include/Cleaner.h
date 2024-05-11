@@ -5,8 +5,8 @@
 
 class Cleaner : public Personal {
  public:
-    Cleaner(int id, const std::string& name);
-    Cleaner(int id, const std::string& name, int worktime);
+    Cleaner(int id, const std::string& name, int hourlyRate);
+    Cleaner(int id, const std::string& name, int hourlyRate, int worktime);
 
     void calculatePayment() override;
     void printInfo() override;

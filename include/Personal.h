@@ -4,7 +4,7 @@
 #include "Employee.h"
 #include "WorkBaseTime.h"
 
-class Personal : protected Employee, public WorkBaseTime {
+class Personal : public Employee, public WorkBaseTime {
  public:
     Personal(int id, const std::string& name, Position position, int hourlyRate);
     Personal(int id, const std::string &name, Position position, int hourlyRate, int worktime);

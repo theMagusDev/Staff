@@ -3,7 +3,7 @@
 
 #include "Personal.h"
 
-class Driver : Personal {
+class Driver : public Personal {
  public:
     Driver(int id, const std::string& name, int horlyRate);
     Driver(int id, const std::string& name, int hourlyRate, int nightHours, int worktime);

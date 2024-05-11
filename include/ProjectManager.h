@@ -8,7 +8,7 @@
 #include "Heading.h"
 #include "ProjectBudget.h"
 
-class ProjectManager : protected Employee, public Heading, public ProjectBudget {
+class ProjectManager : public Employee, public Heading, public ProjectBudget {
  public:
     ProjectManager(int id, const std::string& name, Position position);
     ProjectManager(int id, const std::string& name, Position position, Project& project);

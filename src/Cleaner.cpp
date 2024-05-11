@@ -4,14 +4,16 @@
 
 Cleaner::Cleaner(
         int id,
-        const std::string& name
-) : Personal(id, name, Position::CLEANER) {}
+        const std::string& name,
+        int hourlyRate
+) : Personal(id, name, Position::CLEANER, hourlyRate) {}
 
 Cleaner::Cleaner(
         int id,
         const std::string& name,
+        int hourlyRate,
         int worktime
-) : Personal(id, name, Position::CLEANER, worktime) {}
+) : Personal(id, name, Position::CLEANER, hourlyRate, worktime) {}
 
 void Cleaner::calculatePayment() {
     setPayment(calculateBase() + calculateBonus());
