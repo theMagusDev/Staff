@@ -25,4 +25,6 @@ add_executable(Staff src/main.cpp
         src/Engineer.cpp
         include/Engineer.h
         src/Tester.cpp
-        include/Tester.h)
+        include/Tester.h
+        src/Programmer.cpp
+        include/Programmer.h)

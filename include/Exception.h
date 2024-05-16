@@ -86,14 +86,25 @@ class EngineerException : public PersonalException {
             PersonalException(std::move(message)) {}
 };
 class TesterException : public EngineerException {
-public:
+ public:
     explicit TesterException(std::string message) :
             EngineerException(std::move(message)) {}
 };
 class InvalidFoundBugsValueException : public TesterException {
-public:
+ public:
     explicit InvalidFoundBugsValueException(std::string message) :
             TesterException(std::move(message)) {};
+};
+
+class ProgrammerException : public EngineerException {
+ public:
+    explicit ProgrammerException(std::string message) :
+            EngineerException(std::move(message)) {}
+};
+class InvalidCodeLinesWrittenValueException : public ProgrammerException {
+ public:
+    explicit InvalidCodeLinesWrittenValueException(std::string message) :
+            ProgrammerException(std::move(message)) {};
 };
 
 #endif //STAFF_EXCEPTION_H
