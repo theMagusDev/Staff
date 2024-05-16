@@ -37,4 +37,18 @@ void TeamLeader::calculatePayment() {
                + calculateHeads());
 }
 
+void TeamLeader::printInfo() {
+    std::cout << "Employee " << getName() << " info: " << std::endl;
+    std::cout << " ID: " << getId() << std::endl;
+    std::cout << " Position: " << getPosition() << std::endl;
+    std::cout << " Work time: " << getWorkTime() << std::endl;
+    std::cout << " Hourly rate: " << getHourlyRate() << std::endl;
+    std::cout << " Code lines written: " << getCodeLinesWritten() << std::endl;
+    std::cout << " Payment: " << getPayment() << std::endl;
+    if (getProject() != nullptr) {
+        std::cout << " Project: " << std::endl;
+        getProject()->printProjectInfo();
+    }
+}
+
 

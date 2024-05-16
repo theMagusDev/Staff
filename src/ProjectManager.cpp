@@ -3,7 +3,6 @@
 #define BIG_PROJECT_CRITERIA 7
 #define PROJECT_MANAGER_PART 0.25
 
-#include <cmath>
 #include <iostream>
 #include "../include/ProjectManager.h"
 

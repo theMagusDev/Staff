@@ -33,6 +33,10 @@ void Tester::printInfo() {
     std::cout << " Hourly rate: " << getHourlyRate() << std::endl;
     std::cout << " Bugs found: " << getBugsFound() << std::endl;
     std::cout << " Payment: " << getPayment() << std::endl;
+    if (getProject() != nullptr) {
+        std::cout << " Project: " << std::endl;
+        getProject()->printProjectInfo();
+    }
 }
 
 int Tester::getBugsFound() const {

@@ -33,6 +33,10 @@ void Programmer::printInfo() {
     std::cout << " Hourly rate: " << getHourlyRate() << std::endl;
     std::cout << " Code lines written: " << getCodeLinesWritten() << std::endl;
     std::cout << " Payment: " << getPayment() << std::endl;
+    if (getProject() != nullptr) {
+        std::cout << " Project: " << std::endl;
+        getProject()->printProjectInfo();
+    }
 }
 
 int Programmer::getCodeLinesWritten() const {
