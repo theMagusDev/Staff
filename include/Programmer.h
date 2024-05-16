@@ -15,10 +15,11 @@ class Programmer : public Engineer {
     void calculatePayment() override;
     void printInfo() override;
 
+ protected:
+    int calculateProAdditions() const override;
+
  private:
     int codeLinesWritten;
-
-    int calculateProAdditions() const override;
 };
 
 
