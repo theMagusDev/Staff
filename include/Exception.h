@@ -69,14 +69,31 @@ class InvalidHourlyRateException : public PersonalException {
             PersonalException(std::move(message)) {};
 };
 
-class DriverException: public PersonalException {
+class DriverException : public PersonalException {
  public:
     explicit DriverException(std::string message) :
             PersonalException(std::move(message)) {}
 };
-class InvalidNightHoursException: public DriverException {
-public:
+class InvalidNightHoursException : public DriverException {
+ public:
     explicit InvalidNightHoursException(std::string message) :
             DriverException(std::move(message)) {}
 };
+
+class EngineerException : public PersonalException {
+ public:
+    explicit EngineerException(std::string message) :
+            PersonalException(std::move(message)) {}
+};
+class TesterException : public EngineerException {
+public:
+    explicit TesterException(std::string message) :
+            EngineerException(std::move(message)) {}
+};
+class InvalidFoundBugsValueException : public TesterException {
+public:
+    explicit InvalidFoundBugsValueException(std::string message) :
+            TesterException(std::move(message)) {};
+};
+
 #endif //STAFF_EXCEPTION_H

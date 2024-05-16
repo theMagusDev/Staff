@@ -3,19 +3,33 @@
 
 #include "Personal.h"
 #include "Project.h"
+#include "ProjectBudget.h"
 
-class Engineer : public Personal {
+class Engineer : public Personal, public ProjectBudget {
  public:
-    Engineer(int id, const std::string& name, int hourlyRate);
-    Engineer(int id, const std::string& name, int hourlyRate, int worktime);
+    Engineer(
+        int id,
+        const std::string& name,
+        Position position,
+        int hourlyRate,
+        Project* project
+    );
+    Engineer(
+            int id,
+            const std::string& name,
+            Position position,
+            int hourlyRate,
+            int worktime,
+            Project* project
+    );
+
+    Project *getProject() const;
+    void setProject(Project *project);
 
     void calculatePayment() override;
-    void printInfo() override;
 
  private:
     Project* project;
-
-    int calculateBudgetPart() override;
 };
 
 

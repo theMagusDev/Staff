@@ -16,8 +16,8 @@ Personal::Personal(
         int id,
         const std::string& name,
         Position position,
-        int worktime,
-        int hourlyRate
+        int hourlyRate,
+        int worktime
 ) : Personal(id, name, position, hourlyRate) {
     setWorkTime(worktime);
 }

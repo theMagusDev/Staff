@@ -74,7 +74,7 @@ int SeniorManager::calculateBudgetsPart(float part) const {
     int result = 0;
     for (Project* project : projects) {
         result += calculateBudgetPart(
-                project->getBudget(),
+                project,
                 part
                 );
     }
@@ -104,4 +104,26 @@ void SeniorManager::printInfo() {
             project->printProjectInfo();
         }
     }
+}
+
+std::vector<Project*> SeniorManager::getProjects() const {
+    return this->projects;
+}
+
+void SeniorManager::addProject(Project* newProject) {
+    if (newProject != nullptr) {
+        projects.push_back(newProject);
+    }
+}
+
+Project* SeniorManager::popProject(int projectID) {
+    Project* hold = nullptr;
+    for (int i = 0; i < projects.size(); i++) {
+        if (projects[i]->getId() == projectID) {
+            hold = projects[i];
+            projects.erase(projects.begin() + i);
+        }
+    }
+
+    return hold;
 }

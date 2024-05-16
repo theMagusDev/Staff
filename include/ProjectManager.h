@@ -15,13 +15,15 @@ class ProjectManager : public Employee, public Heading, public ProjectBudget {
     ProjectManager(int id, const std::string& name, Position position, int worktime);
     ProjectManager(int id, const std::string& name, Position position, int worktime, Project& project);
 
+    Project* getProject() const;
+    void setProject(Project* newProject);
+
     void calculatePayment() override;
     void printInfo() override;
 
  protected:
     std::vector<Project*> projects;
     bool hasProject() const;
-    int calculateBudgetPart(int budget, float part) const override;
 
  private:
     int calculateHeads() const override;

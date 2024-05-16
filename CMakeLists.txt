@@ -23,4 +23,6 @@ add_executable(Staff src/main.cpp
         src/Driver.cpp
         include/Driver.h
         src/Engineer.cpp
-        include/Engineer.h)
+        include/Engineer.h
+        src/Tester.cpp
+        include/Tester.h)

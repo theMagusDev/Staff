@@ -10,6 +10,10 @@ class SeniorManager : protected ProjectManager {
     SeniorManager(int id, const std::string& name, Position position, int worktime);
     SeniorManager(int id, const std::string& name, Position position, int worktime, std::vector<Project*>& projects);
 
+    std::vector<Project*> getProjects() const;
+    void addProject(Project* newProject);
+    Project* popProject(int projectID);
+
     void calculatePayment() override;
     void printInfo() override;
 

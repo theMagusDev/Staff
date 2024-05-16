@@ -31,6 +31,7 @@ ProjectManager::ProjectManager(
         int worktime
 ) : Employee(id, name, position, worktime) {
     projects = *(new std::vector<Project*>(1));
+    projects[0] = nullptr;
 }
 
 ProjectManager::ProjectManager(
@@ -63,17 +64,13 @@ int ProjectManager::calculateHeads() const {
     return PAYMENT_PER_PERSON_IN_PROJECT * projects[0]->getNumberOfEmployees();
 }
 
-int ProjectManager::calculateBudgetPart(int budget, float part) const {
-    return std::ceil(static_cast<float>(budget) * part);
-}
-
 void ProjectManager::calculatePayment() {
     if (hasProject()) {
         setPayment(
             calculateHeads()
             + calculateProAdditions()
             + calculateBudgetPart(
-                    projects[0]->getBudget(),
+                    projects[0],
                     PROJECT_MANAGER_PART)
         );
     } else {
@@ -95,6 +92,26 @@ void ProjectManager::printInfo() {
 
 bool ProjectManager::hasProject() const {
     return this->projects[0] != nullptr;
+}
+
+Project* ProjectManager::getProject() const {
+    if (projects.empty()) {
+        return nullptr;
+    }
+
+    return this->projects[0];
+}
+
+void ProjectManager::setProject(Project* newProject) {
+    if (newProject == nullptr) {
+        return;
+    }
+
+    if (projects.empty()) {
+        projects.push_back(newProject);
+    } else {
+        this->projects[0] = newProject;
+    }
 }
 
 
