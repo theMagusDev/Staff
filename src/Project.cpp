@@ -81,3 +81,11 @@ void Project::printProjectInfo() const {
     std::cout << " Number of employees: "
         << getNumberOfEmployees() << std::endl;
 }
+
+bool Project::hasManager() const {
+    return this->isManaged;
+}
+
+void Project::setHasManager(bool isManaged) {
+    this->isManaged = isManaged;
+}

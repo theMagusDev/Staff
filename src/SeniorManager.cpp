@@ -26,6 +26,17 @@ SeniorManager::SeniorManager(
         Position position,
         std::vector<Project*>& projects
 ) : ProjectManager(id, name, position) {
+    // check vector for unavailable projects
+    for (int i = 0; i < projects.size(); i++) {
+        if (projects[i]->hasManager()) {
+            std::cerr << "Error in Senior manager " << name
+                      << "constructor: project " << projects[i]->getId()
+                      << " already has manager" << std::endl;
+            projects.erase(projects.begin() + i);
+        } else {
+            projects[i]->setHasManager(true);
+        }
+    }
     this->projects = projects;
 }
 
@@ -36,6 +47,17 @@ SeniorManager::SeniorManager(
         int workTime,
         std::vector<Project*>& projects
 ) : ProjectManager(id, name, position) {
+    // check vector for unavailable projects
+    for (int i = 0; i < projects.size(); i++) {
+        if (projects[i]->hasManager()) {
+            std::cerr << "Error in Senior manager " << name
+                      << "constructor: project " << projects[i]->getId()
+                      << " already has manager" << std::endl;
+            projects.erase(projects.begin() + i);
+        } else {
+            projects[i]->setHasManager(true);
+        }
+    }
     this->projects = projects;
     setWorkTime(workTime);
 }
@@ -111,8 +133,17 @@ std::vector<Project*> SeniorManager::getProjects() const {
 }
 
 void SeniorManager::addProject(Project* newProject) {
-    if (newProject != nullptr) {
-        projects.push_back(newProject);
+    if (newProject == nullptr) {
+        return;
+    }
+
+    if (newProject->hasManager()) {
+        std::cerr << "Error in Senior manager " << getName()
+                  << ": project " << newProject->getId()
+                  << " already has manager" << std::endl;
+    } else {
+        this->projects.push_back(newProject);
+        newProject->setHasManager(true);
     }
 }
 
@@ -125,5 +156,6 @@ Project* SeniorManager::popProject(int projectID) {
         }
     }
 
+    hold->setHasManager(false);
     return hold;
 }

@@ -15,6 +15,8 @@ class Project {
     void setBudget(int newBudget);
     int getNumberOfEmployees() const;
     void setNumberOfEmployees(int newNumberOfEmployees);
+    bool hasManager() const;
+    void setHasManager(bool hasManager);
 
     void printProjectInfo() const;
 
@@ -22,7 +24,7 @@ class Project {
     int id;
     int budget;
     int numberOfEmployees;
-    ProjectManager* projectManager; 
+    bool isManaged;
 
     static std::set<int> occupiedIDs;
 };

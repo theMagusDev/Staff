@@ -20,7 +20,15 @@ ProjectManager::ProjectManager(
         Position position,
         Project& project
 ) : ProjectManager(id, name, position) {
-    projects[0] = &project;
+    if (project.hasManager()) {
+        std::cerr << "Error in Project manager " << name
+        << "constructor: project " << project.getId()
+        << " already has manager" << std::endl;
+        projects[0] = nullptr;
+    } else {
+        projects[0] = &project;
+        projects[0]->setHasManager(true);
+    }
 }
 
 ProjectManager::ProjectManager(
@@ -40,7 +48,15 @@ ProjectManager::ProjectManager(
         int worktime,
         Project& project
 ) : ProjectManager(id, name, position, worktime) {
-    projects[0] = &project;
+    if (project.hasManager()) {
+        std::cerr << "Error in Project manager " << name
+                  << "constructor: project " << project.getId()
+                  << " already has manager" << std::endl;
+        projects[0] = nullptr;
+    } else {
+        projects[0] = &project;
+        projects[0]->setHasManager(true);
+    }
 }
 
 int ProjectManager::calculateProAdditions() const {
@@ -108,9 +124,16 @@ void ProjectManager::setProject(Project* newProject) {
 
     if (projects.empty()) {
         projects.push_back(newProject);
+        projects[0]->setHasManager(true);
     } else {
-        this->projects[0] = newProject;
+        if (newProject->hasManager()) {
+            std::cerr << "Error in Project manager " << getName()
+                      << ": project " << newProject->getId()
+                      << " already has manager" << std::endl;
+        } else {
+            projects[0]->setHasManager(false);
+            this->projects[0] = newProject;
+            projects[0]->setHasManager(true);
+        }
     }
 }
-
-
