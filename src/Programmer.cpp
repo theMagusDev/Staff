@@ -56,11 +56,15 @@ void Programmer::incrementCodeLinesWritten() {
 }
 
 int Programmer::calculateProAdditions() const {
-    return getCodeLinesWritten() * BONUS_FOR_CODE_LINE;
+    return 0;
 }
 
 void Programmer::calculatePayment() {
     setPayment(calculateBase()
                + calculateProAdditions()
                + calculateBudgetPart(getProject(), PROGRAMMER_PROJECT_PART));
+}
+
+int Programmer::calculateBonus() const {
+    return getCodeLinesWritten() * BONUS_FOR_CODE_LINE;
 }

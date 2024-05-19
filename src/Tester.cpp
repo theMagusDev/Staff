@@ -65,4 +65,6 @@ void Tester::calculatePayment() {
     + calculateBudgetPart(getProject(), TESTER_PROJECT_PART));
 }
 
-
+int Tester::calculateBonus() const {
+    return 0;
+}

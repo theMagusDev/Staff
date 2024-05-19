@@ -1,67 +1,219 @@
+#include "../include/Exception.h"
 #include "../include/Factory.h"
-#include "../include/Project.h"
+#include "../include/ProjectManager.h"
+#include "../include/Tester.h"
+#include "../include/TeamLeader.h"
+#include "../include/SeniorManager.h"
+#include "../include/Driver.h"
+#include "../include/Cleaner.h"
 #include <iostream>
 #include <fstream>
+
+Project* findProject(std::vector<Project*> projects, int id) {
+    for (Project* project : projects) {
+        if (project->getId() == id) {
+            return project;
+        }
+    }
+
+    return nullptr;
+}
+
+Position determinePosition(const std::string& strPosition) {
+    if (strPosition == "UNINITIALIZED") {
+        return Position::UNINITIALIZED;
+    }
+    if (strPosition == "TEAM_LEADER") {
+        return Position::TEAM_LEADER;
+    }
+    if (strPosition == "PROGRAMMER") {
+        return Position::PROGRAMMER;
+    }
+    if (strPosition == "TESTER") {
+        return Position::TESTER;
+    }
+    if (strPosition == "PROJECT_MANAGER") {
+        return Position::PROJECT_MANAGER;
+    }
+    if (strPosition == "SENIOR_MANAGER") {
+        return Position::SENIOR_MANAGER;
+    }
+    if (strPosition == "DRIVER") {
+        return Position::DRIVER;
+    }
+    if (strPosition == "CLEANER") {
+        return Position::CLEANER;
+    }
+}
 
 std::vector<Employee *> Factory::makeStaff() {
     std::ifstream projectsData("projects_info.txt");
     std::vector<Project*> projects;
-
-}
-
-/*
-std::vector<Employee *> Factory_Staff::make_staff() {
-    std::ifstream data_Projects("projects_info.txt");
-    std::vector<Project *> projects;
-    int project_Id = 0;
-    int number_of_employees = 0;
+    int projectID = 0;
+    int numberOfEmployees = 0;
     int budget = 0;
 
-    std::ifstream data_Staff("staff_info.txt");
+    std::ifstream staffData("staff_info.txt");
+    std::vector<Employee*> staff;
     std::string name;
     int id = 0;
-    int work_time = 0;
+    int workTime = 0;
     int salary = 0;
-    std::string posVal;
-    if (!data_Staff.is_open()) {
-        throw "no open dataS";
+    Position position;
+    std::string strPosition;
+    int bonusField;
+
+    if (!projectsData.is_open()) {
+        throw FileIOException("Error while opening projects data");
     }
-    if (!data_Projects.is_open()) {
-        throw "no open dataP";
+    if (!staffData.is_open()) {
+        throw FileIOException("Error while opening staff data");
     }
-    std::string templ;
-    while (!data_Projects.eof()) {
-        getline(data_Projects, templ);
-        if (!templ.empty()) {
-            project_Id = atoi(templ.c_str());
-            getline(data_Projects, templ);
-            budget = atoi(templ.c_str());
-            getline(data_Projects, templ);
-            number_of_employees = atoi(templ.c_str());
-            projects.push_back(new Project(project_Id, budget,
-                                           number_of_employees));
+
+    std::string buffer;
+    while (!projectsData.eof()) {
+        getline(projectsData, buffer);
+        if (!buffer.empty()) {
+            projectID = atoi(buffer.c_str());
+            getline(projectsData, buffer);
+            budget = atoi(buffer.c_str());
+            numberOfEmployees = atoi(buffer.c_str());
+            getline(projectsData, buffer);
+            projects.push_back(
+                new Project(projectID, budget, numberOfEmployees)
+            );
         }
     }
 
-    std::vector<Employee *> staff;
-    std::cout << std::endl;
-    while (!data_Staff.eof()) {
-        getline(data_Staff, templ);
-        if (!templ.empty()) {
-            id = atoi(templ.c_str());
-            getline(data_Staff, name);
-            getline(data_Staff, templ);
-            work_time = atoi(templ.c_str());
-            getline(data_Staff, templ);
-            salary = atoi(templ.c_str());
-            getline(data_Staff, posVal);
-            getline(data_Staff, templ);
-            project_Id = atoi(templ.c_str());
-            staff.push_back(
-                    make_employee(id, name, work_time, salary, posVal,
-                                  project_Id, projects));
+    int hourlyRate = -1;
+    int projectInvolvedID = -1;
+    int numberOfProjects = -1;
+    std::vector<Project*> seniorManagerProjects;
+    while (!staffData.eof()) {
+        getline(staffData, buffer);
+        if (!buffer.empty()) {
+            id = atoi(buffer.c_str());
+            getline(staffData, name);
+            getline(staffData, strPosition);
+            getline(staffData, buffer);
+            workTime = atoi(buffer.c_str());
+            position = determinePosition(strPosition);
+            switch (position) {
+                case Position::UNINITIALIZED:
+                    std::cerr << "Uninitialized position in employee "
+                    << name << ", can not create abstract class instance"
+                    << std::endl;
+                    break;
+                case Position::TEAM_LEADER:
+                    getline(staffData, buffer);
+                    hourlyRate = atoi(buffer.c_str());
+                    getline(staffData, buffer);
+                    bonusField = atoi(buffer.c_str());
+                    getline(staffData, buffer);
+                    projectInvolvedID = atoi(buffer.c_str());
+                    staff.push_back(
+                        new TeamLeader(
+                                id,
+                                name,
+                                hourlyRate,
+                                workTime,
+                                findProject(projects, projectInvolvedID),
+                                bonusField
+                        )
+                    );
+                    break;
+                case Position::PROGRAMMER:
+                    getline(staffData, buffer);
+                    hourlyRate = atoi(buffer.c_str());
+                    getline(staffData, buffer);
+                    bonusField = atoi(buffer.c_str());
+                    getline(staffData, buffer);
+                    projectInvolvedID = atoi(buffer.c_str());
+                    staff.push_back(
+                            new Programmer(
+                                    id,
+                                    name,
+                                    hourlyRate,
+                                    workTime,
+                                    findProject(projects, projectInvolvedID),
+                                    bonusField
+                            )
+                    );
+                    break;
+                case Position::TESTER:
+                    getline(staffData, buffer);
+                    hourlyRate = atoi(buffer.c_str());
+                    getline(staffData, buffer);
+                    bonusField = atoi(buffer.c_str());
+                    getline(staffData, buffer);
+                    projectInvolvedID = atoi(buffer.c_str());
+                    staff.push_back(
+                            new Tester(
+                                    id,
+                                    name,
+                                    hourlyRate,
+                                    workTime,
+                                    findProject(projects, projectInvolvedID),
+                                    bonusField
+                            )
+                    );
+                    break;
+                case Position::PROJECT_MANAGER:
+                    getline(staffData, buffer);
+                    projectInvolvedID = atoi(buffer.c_str());
+                    staff.push_back(
+                            new ProjectManager(
+                                    id,
+                                    name,
+                                    workTime,
+                                    *findProject(projects, projectInvolvedID))
+                    );
+                    break;
+                case Position::SENIOR_MANAGER:
+                    getline(staffData, buffer);
+                    numberOfProjects = atoi(buffer.c_str());
+                    for (int i = 0; i < numberOfEmployees; i++) {
+                        getline(staffData, buffer);
+                        projectInvolvedID = atoi(buffer.c_str());
+                        seniorManagerProjects.push_back(findProject(projects, projectInvolvedID));
+                    }
+                    staff.push_back(
+                            new SeniorManager(
+                                    id,
+                                    name,
+                                    workTime,
+                                    seniorManagerProjects)
+                    );
+                    seniorManagerProjects.clear();
+                    break;
+                case Position::DRIVER:
+                    getline(staffData, buffer);
+                    hourlyRate = atoi(buffer.c_str());
+                    getline(staffData, buffer);
+                    bonusField = atoi(buffer.c_str());
+                    staff.push_back(
+                            new Driver(
+                                    id,
+                                    name,
+                                    hourlyRate,
+                                    bonusField,
+                                    workTime)
+                    );
+                    break;
+                case Position::CLEANER:
+                    getline(staffData, buffer);
+                    hourlyRate = atoi(buffer.c_str());
+                    staff.push_back(
+                            new Cleaner(
+                                    id,
+                                    name,
+                                    hourlyRate,
+                                    workTime)
+                    );
+                    break;
+            }
         }
     }
+
     return staff;
 }
- */

@@ -32,9 +32,9 @@ int TeamLeader::calculateHeads() const {
 
 void TeamLeader::calculatePayment() {
     setPayment(calculateBase()
-               + calculateProAdditions()
                + calculateBudgetPart(getProject(), TEAM_LEADER_PROJECT_PART)
-               + calculateHeads());
+               + calculateHeads()
+               + calculateBonus());
 }
 
 void TeamLeader::printInfo() {

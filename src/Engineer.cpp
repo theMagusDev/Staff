@@ -26,7 +26,7 @@ Project* Engineer::getProject() const {
 }
 
 void Engineer::setProject(Project* newProject) {
-    Engineer::project = newProject;
+    this->project = newProject;
 }
 
 

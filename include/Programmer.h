@@ -17,6 +17,7 @@ class Programmer : public Engineer {
 
  protected:
     int calculateProAdditions() const override;
+    int calculateBonus() const override;
 
  private:
     int codeLinesWritten;

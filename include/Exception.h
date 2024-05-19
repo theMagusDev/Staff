@@ -107,4 +107,10 @@ class InvalidCodeLinesWrittenValueException : public ProgrammerException {
             ProgrammerException(std::move(message)) {};
 };
 
+class FileIOException : public CustomException {
+ public:
+    explicit FileIOException(std::string message) :
+            CustomException(std::move(message)) {};
+};
+
 #endif //STAFF_EXCEPTION_H

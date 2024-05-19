@@ -296,7 +296,7 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "src/Factory.h",
+			"path" : "include/Factory.h",
 			"sourceGroupIndex" : 1
 		}
 	],

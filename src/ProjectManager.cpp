@@ -5,21 +5,23 @@
 
 #include <iostream>
 #include "../include/ProjectManager.h"
+#include "../include/Employee.h"
+
+
 
 ProjectManager::ProjectManager(
         int id,
-        const std::string& name,
-        Position position
-) : Employee(id, name, position) {
+        const std::string& name
+) : Employee(id, name) {
+    setPosition(Position::PROJECT_MANAGER);
     projects = *(new std::vector<Project*>(1));
 }
 
 ProjectManager::ProjectManager(
         int id,
         const std::string& name,
-        Position position,
         Project& project
-) : ProjectManager(id, name, position) {
+) : ProjectManager(id, name) {
     if (project.hasManager()) {
         std::cerr << "Error in Project manager " << name
         << "constructor: project " << project.getId()
@@ -34,9 +36,9 @@ ProjectManager::ProjectManager(
 ProjectManager::ProjectManager(
         int id,
         const std::string& name,
-        Position position,
         int worktime
-) : Employee(id, name, position, worktime) {
+) : Employee(id, name, worktime) {
+    setPosition(Position::PROJECT_MANAGER);
     projects = *(new std::vector<Project*>(1));
     projects[0] = nullptr;
 }
@@ -44,10 +46,9 @@ ProjectManager::ProjectManager(
 ProjectManager::ProjectManager(
         int id,
         const std::string& name,
-        Position position,
         int worktime,
         Project& project
-) : ProjectManager(id, name, position, worktime) {
+) : ProjectManager(id, name, worktime) {
     if (project.hasManager()) {
         std::cerr << "Error in Project manager " << name
                   << "constructor: project " << project.getId()
@@ -57,6 +58,13 @@ ProjectManager::ProjectManager(
         projects[0] = &project;
         projects[0]->setHasManager(true);
     }
+}
+
+ProjectManager::~ProjectManager() {
+    for (Project* project : projects) {
+        project->setHasManager(false);
+    }
+    projects.clear();
 }
 
 int ProjectManager::calculateProAdditions() const {
@@ -136,4 +144,8 @@ void ProjectManager::setProject(Project* newProject) {
             projects[0]->setHasManager(true);
         }
     }
+}
+
+std::vector<Project *> ProjectManager::getProjects() {
+    return projects;
 }

@@ -20,6 +20,7 @@ class Tester : public Engineer {
     int bugsFound;
 
     int calculateProAdditions() const override;
+    int calculateBonus() const override;
 };
 
 

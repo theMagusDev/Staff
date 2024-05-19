@@ -9,23 +9,20 @@
 
 SeniorManager::SeniorManager(
         int id,
-        const std::string& name,
-        Position position
-) : ProjectManager(id, name, position) {}
+        const std::string& name
+) : ProjectManager(id, name) {}
 
 SeniorManager::SeniorManager(
         int id,
         const std::string& name,
-        Position position,
         int workTime
-) : ProjectManager(id, name, position, workTime) {}
+) : ProjectManager(id, name, workTime) {}
 
 SeniorManager::SeniorManager(
         int id,
         const std::string& name,
-        Position position,
         std::vector<Project*>& projects
-) : ProjectManager(id, name, position) {
+) : ProjectManager(id, name) {
     // check vector for unavailable projects
     for (int i = 0; i < projects.size(); i++) {
         if (projects[i]->hasManager()) {
@@ -43,10 +40,9 @@ SeniorManager::SeniorManager(
 SeniorManager::SeniorManager(
         int id,
         const std::string& name,
-        Position position,
         int workTime,
         std::vector<Project*>& projects
-) : ProjectManager(id, name, position) {
+) : ProjectManager(id, name) {
     // check vector for unavailable projects
     for (int i = 0; i < projects.size(); i++) {
         if (projects[i]->hasManager()) {

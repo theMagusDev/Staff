@@ -9,7 +9,7 @@ std::set<int> Employee::occupiedIDs;
 Employee::Employee(
         int id,
         const std::string& name,
-        Position position
+        Position& position
 ) : name(name), position(position) {
     setId(id);
     this->payment = -1;
@@ -26,7 +26,7 @@ Employee::Employee(
 Employee::Employee(
     int id,
     const std::string& name,
-    Position position,
+    Position& position,
     int worktime
 ) : Employee(id, name, position) {
     setWorkTime(worktime);
@@ -135,4 +135,9 @@ bool Employee::isNameCorrect(const std::string &str) {
 
 int Employee::getWorkTime() const {
     return this->worktime;
+}
+
+Employee::Employee(int id, const std::string &name, int worktime) {
+    setWorkTime(worktime);
+    setPosition(Position::UNINITIALIZED);
 }
