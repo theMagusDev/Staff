@@ -2,6 +2,7 @@
 #define STAFF_PROJECT_H
 
 #include <set>
+#include "ProjectManager.h"
 
 class Project {
  public:
@@ -21,6 +22,7 @@ class Project {
     int id;
     int budget;
     int numberOfEmployees;
+    ProjectManager* projectManager; 
 
     static std::set<int> occupiedIDs;
 };

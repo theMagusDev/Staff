@@ -121,6 +121,12 @@ build CMakeFiles/Staff.dir/src/TeamLeader.cpp.obj: CXX_COMPILER__Staff_unscanned
   OBJECT_DIR = CMakeFiles\Staff.dir
   OBJECT_FILE_DIR = CMakeFiles\Staff.dir\src
 
+build CMakeFiles/Staff.dir/src/Factory.cpp.obj: CXX_COMPILER__Staff_unscanned_Debug D$:/Projects/C++/Staff/src/Factory.cpp || cmake_object_order_depends_target_Staff
+  DEP_FILE = CMakeFiles\Staff.dir\src\Factory.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Staff.dir
+  OBJECT_FILE_DIR = CMakeFiles\Staff.dir\src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Staff
@@ -129,7 +135,7 @@ build CMakeFiles/Staff.dir/src/TeamLeader.cpp.obj: CXX_COMPILER__Staff_unscanned
 #############################################
 # Link the executable Staff.exe
 
-build Staff.exe: CXX_EXECUTABLE_LINKER__Staff_Debug CMakeFiles/Staff.dir/src/main.cpp.obj CMakeFiles/Staff.dir/src/Employee.cpp.obj CMakeFiles/Staff.dir/src/Project.cpp.obj CMakeFiles/Staff.dir/src/ProjectManager.cpp.obj CMakeFiles/Staff.dir/src/Personal.cpp.obj CMakeFiles/Staff.dir/src/Cleaner.cpp.obj CMakeFiles/Staff.dir/src/SeniorManager.cpp.obj CMakeFiles/Staff.dir/src/Driver.cpp.obj CMakeFiles/Staff.dir/src/Engineer.cpp.obj CMakeFiles/Staff.dir/src/Tester.cpp.obj CMakeFiles/Staff.dir/src/Programmer.cpp.obj CMakeFiles/Staff.dir/src/TeamLeader.cpp.obj
+build Staff.exe: CXX_EXECUTABLE_LINKER__Staff_Debug CMakeFiles/Staff.dir/src/main.cpp.obj CMakeFiles/Staff.dir/src/Employee.cpp.obj CMakeFiles/Staff.dir/src/Project.cpp.obj CMakeFiles/Staff.dir/src/ProjectManager.cpp.obj CMakeFiles/Staff.dir/src/Personal.cpp.obj CMakeFiles/Staff.dir/src/Cleaner.cpp.obj CMakeFiles/Staff.dir/src/SeniorManager.cpp.obj CMakeFiles/Staff.dir/src/Driver.cpp.obj CMakeFiles/Staff.dir/src/Engineer.cpp.obj CMakeFiles/Staff.dir/src/Tester.cpp.obj CMakeFiles/Staff.dir/src/Programmer.cpp.obj CMakeFiles/Staff.dir/src/TeamLeader.cpp.obj CMakeFiles/Staff.dir/src/Factory.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Staff.dir

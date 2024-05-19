@@ -29,4 +29,6 @@ add_executable(Staff src/main.cpp
         src/Programmer.cpp
         include/Programmer.h
         src/TeamLeader.cpp
-        include/TeamLeader.h)
+        include/TeamLeader.h
+        src/Factory.cpp
+        include/Factory.h)
