@@ -27,8 +27,6 @@ class Engineer : public Personal, public ProjectBudget {
     Project *getProject() const;
     void setProject(Project *project);
 
-    void calculatePayment() override;
-
  private:
     Project* project;
 };
