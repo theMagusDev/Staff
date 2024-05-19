@@ -47,7 +47,7 @@ int SeniorManager::calculateHeads() const {
 
     int result = 0;
     for (Project* project : projects) {
-        result += PAYMENT_PER_PERSON_IN_PROJECT * project->getNumberOfEmployees();
+        result += PAYMENT_PER_PERSON_IN_PROJECT * (project->getNumberOfEmployees() - 1);
     }
     return result;
 }

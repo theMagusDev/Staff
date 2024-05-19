@@ -60,7 +60,7 @@ int ProjectManager::calculateHeads() const {
         return 0;
     }
 
-    return PAYMENT_PER_PERSON_IN_PROJECT * projects[0]->getNumberOfEmployees();
+    return PAYMENT_PER_PERSON_IN_PROJECT * (projects[0]->getNumberOfEmployees() - 1);
 }
 
 void ProjectManager::calculatePayment() {
