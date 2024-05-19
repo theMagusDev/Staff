@@ -9,7 +9,9 @@ TeamLeader::TeamLeader(
         int hourlyRate,
         Project* project,
         int codeLinesWritten
-) : Programmer(id, name, hourlyRate, project, codeLinesWritten) {}
+) : Programmer(id, name, hourlyRate, project, codeLinesWritten) {
+    setPosition(Position::TEAM_LEADER);
+}
 
 TeamLeader::TeamLeader(
         int id,
@@ -18,7 +20,9 @@ TeamLeader::TeamLeader(
         int worktime,
         Project* project,
         int codeLinesWritten
-) : Programmer(id, name, hourlyRate, worktime, project, codeLinesWritten) {}
+) : Programmer(id, name, hourlyRate, worktime, project, codeLinesWritten) {
+    setPosition(Position::TEAM_LEADER);
+}
 
 int TeamLeader::calculateHeads() const {
     if (this->getProject() == nullptr) {

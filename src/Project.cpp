@@ -9,6 +9,7 @@ Project::Project(
     int budget,
     int numberOfEmployees
 ) {
+    setHasManager(false);
     setId(id);
     setBudget(budget);
     setNumberOfEmployees(numberOfEmployees);
@@ -80,6 +81,7 @@ void Project::printProjectInfo() const {
     std::cout << "Project #" << getId() << std::endl;
     std::cout << " Number of employees: "
         << getNumberOfEmployees() << std::endl;
+    std::cout << " Budget: " << getBudget() << std::endl;
 }
 
 bool Project::hasManager() const {

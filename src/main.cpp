@@ -9,7 +9,9 @@
 
 int main() {
     std::vector<Employee*> staff = Factory::makeStaff();
-
+    for (Employee* employee : staff) {
+        employee->printInfo();
+    }
 
     return 0;
 }

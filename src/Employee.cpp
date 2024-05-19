@@ -138,6 +138,7 @@ int Employee::getWorkTime() const {
 }
 
 Employee::Employee(int id, const std::string &name, int worktime) {
+    setId(id);
     setWorkTime(worktime);
     setPosition(Position::UNINITIALIZED);
 }

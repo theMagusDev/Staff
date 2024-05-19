@@ -24,7 +24,7 @@ ProjectManager::ProjectManager(
 ) : ProjectManager(id, name) {
     if (project.hasManager()) {
         std::cerr << "Error in Project manager " << name
-        << "constructor: project " << project.getId()
+        << " constructor: project " << project.getId()
         << " already has manager" << std::endl;
         projects[0] = nullptr;
     } else {
@@ -49,9 +49,10 @@ ProjectManager::ProjectManager(
         int worktime,
         Project& project
 ) : ProjectManager(id, name, worktime) {
+    setPosition(Position::PROJECT_MANAGER);
     if (project.hasManager()) {
         std::cerr << "Error in Project manager " << name
-                  << "constructor: project " << project.getId()
+                  << " constructor: project " << project.getId()
                   << " already has manager" << std::endl;
         projects[0] = nullptr;
     } else {

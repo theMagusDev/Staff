@@ -27,7 +27,7 @@ SeniorManager::SeniorManager(
     for (int i = 0; i < projects.size(); i++) {
         if (projects[i]->hasManager()) {
             std::cerr << "Error in Senior manager " << name
-                      << "constructor: project " << projects[i]->getId()
+                      << " constructor: project " << projects[i]->getId()
                       << " already has manager" << std::endl;
             projects.erase(projects.begin() + i);
         } else {
@@ -43,11 +43,15 @@ SeniorManager::SeniorManager(
         int workTime,
         std::vector<Project*>& projects
 ) : ProjectManager(id, name) {
+    setPosition(Position::PROJECT_MANAGER);
     // check vector for unavailable projects
     for (int i = 0; i < projects.size(); i++) {
+        if (projects[i] == nullptr) {
+            break;
+        }
         if (projects[i]->hasManager()) {
             std::cerr << "Error in Senior manager " << name
-                      << "constructor: project " << projects[i]->getId()
+                      << " constructor: project " << projects[i]->getId()
                       << " already has manager" << std::endl;
             projects.erase(projects.begin() + i);
         } else {

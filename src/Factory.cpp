@@ -49,19 +49,19 @@ Position determinePosition(const std::string& strPosition) {
 std::vector<Employee *> Factory::makeStaff() {
     std::ifstream projectsData("../bd/projects_info.txt");
     std::vector<Project*> projects;
-    int projectID = 0;
-    int numberOfEmployees = 0;
-    int budget = 0;
+    int projectID = -1;
+    int numberOfEmployees = -1;
+    int budget = -1;
 
     std::ifstream staffData("../bd/staff_info.txt");
     std::vector<Employee*> staff;
     std::string name;
-    int id = 0;
-    int workTime = 0;
-    int salary = 0;
+    int id = -1;
+    int workTime = -1;
+    int salary = -1;
     Position position;
     std::string strPosition;
-    int bonusField;
+    int bonusField = -1;
 
     if (!projectsData.is_open()) {
         throw FileIOException("Error while opening projects data");
@@ -77,14 +77,13 @@ std::vector<Employee *> Factory::makeStaff() {
             projectID = atoi(buffer.c_str());
             getline(projectsData, buffer);
             budget = atoi(buffer.c_str());
-            numberOfEmployees = atoi(buffer.c_str());
             getline(projectsData, buffer);
+            numberOfEmployees = atoi(buffer.c_str());
             projects.push_back(
                 new Project(projectID, budget, numberOfEmployees)
             );
         }
     }
-
     int hourlyRate = -1;
     int projectInvolvedID = -1;
     int numberOfProjects = -1;
