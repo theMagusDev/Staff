@@ -60,11 +60,21 @@ int Programmer::calculateProAdditions() const {
 }
 
 void Programmer::calculatePayment() {
-    setPayment(calculateBase()
-               + calculateProAdditions()
-               + calculateBudgetPart(getProject(), PROGRAMMER_PROJECT_PART));
+    if (getProject() != nullptr) {
+        setPayment(calculateBase()
+                   + calculateProAdditions()
+                   + calculateBudgetPart(getProject()->getBudget(), PROGRAMMER_PROJECT_PART));
+    } else {
+        setPayment(calculateBase()
+                   + calculateProAdditions());
+    }
 }
 
 int Programmer::calculateBonus() const {
     return getCodeLinesWritten() * BONUS_FOR_CODE_LINE;
+}
+
+Programmer::~Programmer() {
+    this->codeLinesWritten = -1;
+    this->hourlyRate = -1;
 }

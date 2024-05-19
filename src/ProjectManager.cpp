@@ -93,7 +93,7 @@ void ProjectManager::calculatePayment() {
             calculateHeads()
             + calculateProAdditions()
             + calculateBudgetPart(
-                    projects[0],
+                    projects[0]->getBudget(),
                     PROJECT_MANAGER_PART)
         );
     } else {
@@ -144,8 +144,4 @@ void ProjectManager::setProject(Project* newProject) {
             projects[0]->setHasManager(true);
         }
     }
-}
-
-std::vector<Project *> ProjectManager::getProjects() {
-    return projects;
 }

@@ -8,6 +8,8 @@
 #include "Heading.h"
 #include "ProjectBudget.h"
 
+class Project;
+
 class ProjectManager : public Employee, public Heading, public ProjectBudget {
  public:
     ProjectManager(int id, const std::string& name);

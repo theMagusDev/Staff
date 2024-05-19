@@ -8,6 +8,7 @@ class Tester : public Engineer {
  public:
     Tester(int id, const std::string& name, int hourlyRate, Project* project, int bugsFound = 0);
     Tester(int id, const std::string& name, int hourlyRate, int worktime, Project* project, int bugsFound = 0);
+    ~Tester() override;
 
     int getBugsFound() const;
     void setBugsFound(int bugsFound);

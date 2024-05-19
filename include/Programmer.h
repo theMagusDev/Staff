@@ -7,6 +7,7 @@ class Programmer : public Engineer {
  public:
     Programmer(int id, const std::string& name, int hourlyRate, Project* project, int codeLinesWritten = 0);
     Programmer(int id, const std::string& name, int hourlyRate, int worktime, Project* project, int codeLinesWritten = 0);
+    ~Programmer() override;
 
     int getCodeLinesWritten() const;
     void setCodeLinesWritten(int codeLinesWritten);

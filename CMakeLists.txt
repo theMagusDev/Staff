@@ -31,4 +31,5 @@ add_executable(Staff src/main.cpp
         src/TeamLeader.cpp
         include/TeamLeader.h
         src/Factory.cpp
-        include/Factory.h)
+        include/Factory.h
+        src/Exception.cpp)

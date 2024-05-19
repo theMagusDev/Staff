@@ -1,0 +1,22 @@
+# ninja log v5
+9	548	7378162741295959	CMakeFiles/Staff.dir/src/Cleaner.cpp.obj	90c4d246f5be2d26
+2	647	7378168741809333	CMakeFiles/Staff.dir/src/Employee.cpp.obj	10790876d36684d1
+8	446	7378168739799229	CMakeFiles/Staff.dir/src/Personal.cpp.obj	45317c7163ae0152
+16	477	7378168740112381	CMakeFiles/Staff.dir/src/Driver.cpp.obj	417e9b9536f9d6ee
+8	922	7378165456902492	CMakeFiles/Staff.dir/src/SeniorManager.cpp.obj	eabd3afe4f5e9cf3
+8	611	7378168519492369	CMakeFiles/Staff.dir/src/main.cpp.obj	3df135f2f82a094d
+18	737	7378168742708020	CMakeFiles/Staff.dir/src/Factory.cpp.obj	e77d4290fff03ee2
+10	974	7378165457490960	CMakeFiles/Staff.dir/src/ProjectManager.cpp.obj	ecf97338ac917d5
+12	727	7378165455026431	CMakeFiles/Staff.dir/src/Engineer.cpp.obj	c7d910dc0f8a7561
+5	691	7378168742253269	CMakeFiles/Staff.dir/src/Project.cpp.obj	985e53cd49c1876c
+13	636	7378168741703196	CMakeFiles/Staff.dir/src/Tester.cpp.obj	24c3288dd2dc415a
+7	421	7378167339945117	CMakeFiles/Staff.dir/src/TeamLeader.cpp.obj	5bff0532d3c361a7
+11	588	7378168741219461	CMakeFiles/Staff.dir/src/Programmer.cpp.obj	371a57d73a46eefb
+23	360	7378170573523198	CMakeFiles/Staff.dir/src/Exception.cpp.obj	610aa36ee007f5aa
+7	463	7378170574553688	CMakeFiles/Staff.dir/src/Personal.cpp.obj	45317c7163ae0152
+15	499	7378170574916529	CMakeFiles/Staff.dir/src/Driver.cpp.obj	417e9b9536f9d6ee
+5	589	7378170575804713	CMakeFiles/Staff.dir/src/Employee.cpp.obj	10790876d36684d1
+10	615	7378170576068953	CMakeFiles/Staff.dir/src/Tester.cpp.obj	24c3288dd2dc415a
+13	659	7378170576502927	CMakeFiles/Staff.dir/src/Programmer.cpp.obj	371a57d73a46eefb
+2	670	7378170576632299	CMakeFiles/Staff.dir/src/Project.cpp.obj	985e53cd49c1876c
+20	712	7378170577034661	CMakeFiles/Staff.dir/src/Factory.cpp.obj	e77d4290fff03ee2

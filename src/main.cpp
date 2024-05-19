@@ -8,15 +8,9 @@
 #include "../include/Cleaner.h"
 
 int main() {
+    std::vector<Employee*> staff = Factory::makeStaff();
 
 
     return 0;
 }
 
-void testMethods() {
-
-}
-
-void testDataLoad() {
-
-}

@@ -31,10 +31,15 @@ int TeamLeader::calculateHeads() const {
 }
 
 void TeamLeader::calculatePayment() {
-    setPayment(calculateBase()
-               + calculateBudgetPart(getProject(), TEAM_LEADER_PROJECT_PART)
-               + calculateHeads()
-               + calculateBonus());
+    if (getProject() != nullptr) {
+        setPayment(calculateBase()
+                   + calculateBudgetPart(getProject()->getBudget(), TEAM_LEADER_PROJECT_PART)
+                   + calculateHeads()
+                   + calculateBonus());
+    } else {
+        setPayment(calculateBase()
+                   + calculateBonus());
+    }
 }
 
 void TeamLeader::printInfo() {

@@ -60,11 +60,20 @@ int Tester::calculateProAdditions() const {
 }
 
 void Tester::calculatePayment() {
-    setPayment(calculateBase()
-    + calculateProAdditions()
-    + calculateBudgetPart(getProject(), TESTER_PROJECT_PART));
+    if (getProject() != nullptr) {
+        setPayment(calculateBase()
+                   + calculateProAdditions()
+                   + calculateBudgetPart(getProject()->getBudget(), TESTER_PROJECT_PART));
+    } else {
+        setPayment(calculateBase()
+                   + calculateProAdditions());
+    }
 }
 
 int Tester::calculateBonus() const {
     return 0;
+}
+
+Tester::~Tester() {
+    this->bugsFound = -1;
 }

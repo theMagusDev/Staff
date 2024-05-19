@@ -29,4 +29,9 @@ void Engineer::setProject(Project* newProject) {
     this->project = newProject;
 }
 
+Engineer::~Engineer() {
+    this->project->setNumberOfEmployees(project->getNumberOfEmployees() - 1);
+    this->project = nullptr;
+}
+
 

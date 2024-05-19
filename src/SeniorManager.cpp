@@ -92,7 +92,7 @@ int SeniorManager::calculateBudgetsPart(float part) const {
     int result = 0;
     for (Project* project : projects) {
         result += calculateBudgetPart(
-                project,
+                project->getBudget(),
                 part
                 );
     }

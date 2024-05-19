@@ -22,6 +22,7 @@ class Engineer : public Personal, public ProjectBudget {
             int worktime,
             Project* project
     );
+    ~Engineer() override;
 
     Project *getProject() const;
     void setProject(Project *project);
