@@ -52,16 +52,10 @@ std::vector<Employee *> Factory::makeStaff() {
     int projectID = -1;
     int numberOfEmployees = -1;
     int budget = -1;
+    int managerID = -1;
 
     std::ifstream staffData("../bd/staff_info.txt");
     std::vector<Employee*> staff;
-    std::string name;
-    int id = -1;
-    int workTime = -1;
-    int salary = -1;
-    Position position;
-    std::string strPosition;
-    int bonusField = -1;
 
     if (!projectsData.is_open()) {
         throw FileIOException("Error while opening projects data");
@@ -79,11 +73,21 @@ std::vector<Employee *> Factory::makeStaff() {
             budget = atoi(buffer.c_str());
             getline(projectsData, buffer);
             numberOfEmployees = atoi(buffer.c_str());
+            getline(projectsData, buffer);
+            managerID = atoi(buffer.c_str());
             projects.push_back(
-                new Project(projectID, budget, numberOfEmployees)
+                new Project(projectID, budget, numberOfEmployees, managerID)
             );
         }
     }
+
+    std::string name;
+    int id = -1;
+    int workTime = -1;
+    int salary = -1;
+    Position position;
+    std::string strPosition;
+    int bonusField = -1;
     int hourlyRate = -1;
     int projectInvolvedID = -1;
     int numberOfProjects = -1;
@@ -165,7 +169,7 @@ std::vector<Employee *> Factory::makeStaff() {
                                     id,
                                     name,
                                     workTime,
-                                    *findProject(projects, projectInvolvedID))
+                                    findProject(projects, projectInvolvedID))
                     );
                     break;
                 case Position::SENIOR_MANAGER:
