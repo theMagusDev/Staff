@@ -57,6 +57,11 @@ class InvalidNumberOfEmployeesException : public ProjectException {
     explicit InvalidNumberOfEmployeesException(std::string message) :
         ProjectException(std::move(message)) {}
 };
+class InvalidProjectManagerIDException : public ProjectException {
+ public:
+    explicit InvalidProjectManagerIDException(std::string message) :
+            ProjectException(std::move(message)) {}
+};
 
 class PersonalException : public CustomException {
  public:

@@ -24,17 +24,20 @@ SeniorManager::SeniorManager(
         std::vector<Project*>& projects
 ) : ProjectManager(id, name) {
     // check vector for unavailable projects
+    std::vector<Project*> checkedProjects;
     for (int i = 0; i < projects.size(); i++) {
-        if (projects[i]->hasManager()) {
+        if (projects[i]->getManagerId() == -1) {
             std::cerr << "Error in Senior manager " << name
                       << " constructor: project " << projects[i]->getId()
-                      << " already has manager" << std::endl;
-            projects.erase(projects.begin() + i);
+                      << " already has manager with ID "
+                      << projects[i]->getManagerId()
+                      << ", clear it first using clearManager method." << std::endl;
         } else {
-            projects[i]->setHasManager(true);
+            checkedProjects.push_back(projects[i]);
+            projects[i]->setManagerId(this->getId());
         }
     }
-    this->projects = projects;
+    this->projects = checkedProjects;
 }
 
 SeniorManager::SeniorManager(
@@ -44,22 +47,22 @@ SeniorManager::SeniorManager(
         std::vector<Project*>& projects
 ) : ProjectManager(id, name) {
     setPosition(Position::PROJECT_MANAGER);
+    setWorkTime(workTime);
     // check vector for unavailable projects
+    std::vector<Project*> checkedProjects;
     for (int i = 0; i < projects.size(); i++) {
-        if (projects[i] == nullptr) {
-            break;
-        }
-        if (projects[i]->hasManager()) {
+        if (projects[i]->getManagerId() == -1) {
             std::cerr << "Error in Senior manager " << name
                       << " constructor: project " << projects[i]->getId()
-                      << " already has manager" << std::endl;
-            projects.erase(projects.begin() + i);
+                      << " already has manager with ID "
+                      << projects[i]->getManagerId()
+                      << ", clear it first using clearManager method." << std::endl;
         } else {
-            projects[i]->setHasManager(true);
+            checkedProjects.push_back(projects[i]);
+            projects[i]->setManagerId(this->getId());
         }
     }
-    this->projects = projects;
-    setWorkTime(workTime);
+    this->projects = checkedProjects;
 }
 
 int SeniorManager::calculateHeads() const {
@@ -140,10 +143,12 @@ void SeniorManager::addProject(Project* newProject) {
     if (newProject->hasManager()) {
         std::cerr << "Error in Senior manager " << getName()
                   << ": project " << newProject->getId()
-                  << " already has manager" << std::endl;
+                  << " already has manager with ID "
+                  << newProject->getManagerId()
+                  << ", clear it first using clearManager method." << std::endl;
     } else {
         this->projects.push_back(newProject);
-        newProject->setHasManager(true);
+        newProject->setManagerId(this->getId());
     }
 }
 
@@ -156,6 +161,8 @@ Project* SeniorManager::popProject(int projectID) {
         }
     }
 
-    hold->setHasManager(false);
+    if (hold != nullptr) {
+        hold->clearManagerId();
+    }
     return hold;
 }

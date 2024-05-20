@@ -7,8 +7,6 @@
 #include "../include/ProjectManager.h"
 #include "../include/Employee.h"
 
-
-
 ProjectManager::ProjectManager(
         int id,
         const std::string& name
@@ -20,17 +18,9 @@ ProjectManager::ProjectManager(
 ProjectManager::ProjectManager(
         int id,
         const std::string& name,
-        Project& project
+        Project* project
 ) : ProjectManager(id, name) {
-    if (project.hasManager()) {
-        std::cerr << "Error in Project manager " << name
-        << " constructor: project " << project.getId()
-        << " already has manager" << std::endl;
-        projects[0] = nullptr;
-    } else {
-        projects[0] = &project;
-        projects[0]->setHasManager(true);
-    }
+    setProject(project);
 }
 
 ProjectManager::ProjectManager(
@@ -47,23 +37,15 @@ ProjectManager::ProjectManager(
         int id,
         const std::string& name,
         int worktime,
-        Project& project
+        Project* project
 ) : ProjectManager(id, name, worktime) {
     setPosition(Position::PROJECT_MANAGER);
-    if (project.hasManager()) {
-        std::cerr << "Error in Project manager " << name
-                  << " constructor: project " << project.getId()
-                  << " already has manager" << std::endl;
-        projects[0] = nullptr;
-    } else {
-        projects[0] = &project;
-        projects[0]->setHasManager(true);
-    }
+    setProject(project);
 }
 
 ProjectManager::~ProjectManager() {
     for (Project* project : projects) {
-        project->setHasManager(false);
+        project->clearManagerId();
     }
     projects.clear();
 }
@@ -126,6 +108,13 @@ Project* ProjectManager::getProject() const {
     return this->projects[0];
 }
 
+void ProjectManager::clearProject() {
+    if (hasProject()) {
+        this->getProject()->clearManagerId();
+        this->projects[0] = nullptr;
+    }
+}
+
 void ProjectManager::setProject(Project* newProject) {
     if (newProject == nullptr) {
         return;
@@ -133,16 +122,18 @@ void ProjectManager::setProject(Project* newProject) {
 
     if (projects.empty()) {
         projects.push_back(newProject);
-        projects[0]->setHasManager(true);
+        projects[0]->setManagerId(this->getId());
     } else {
-        if (newProject->hasManager()) {
+        if (newProject->getManagerId() != -1) {
             std::cerr << "Error in Project manager " << getName()
                       << ": project " << newProject->getId()
-                      << " already has manager" << std::endl;
+                      << " already has manager with ID "
+                      << newProject->getManagerId()
+                      << ". Clear it first using clearManager() method." << std::endl;
         } else {
-            projects[0]->setHasManager(false);
+            projects[0]->clearManagerId();
             this->projects[0] = newProject;
-            projects[0]->setHasManager(true);
+            projects[0]->setManagerId(this->getId());
         }
     }
 }

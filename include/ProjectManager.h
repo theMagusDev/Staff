@@ -13,13 +13,14 @@ class Project;
 class ProjectManager : public Employee, public Heading, public ProjectBudget {
  public:
     ProjectManager(int id, const std::string& name);
-    ProjectManager(int id, const std::string& name, Project& project);
+    ProjectManager(int id, const std::string& name, Project* project);
     ProjectManager(int id, const std::string& name, int worktime);
-    ProjectManager(int id, const std::string& name, int worktime, Project& project);
+    ProjectManager(int id, const std::string& name, int worktime, Project* project);
     ~ProjectManager() override;
 
     Project* getProject() const;
     void setProject(Project* newProject);
+    void clearProject();
 
     void calculatePayment() override;
     void printInfo() override;

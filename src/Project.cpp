@@ -9,10 +9,22 @@ Project::Project(
     int budget,
     int numberOfEmployees
 ) {
-    setHasManager(false);
     setId(id);
     setBudget(budget);
     setNumberOfEmployees(numberOfEmployees);
+    clearManagerId();
+}
+
+Project::Project(
+        int id,
+        int budget,
+        int numberOfEmployees,
+        int managerId
+) {
+    setId(id);
+    setBudget(budget);
+    setNumberOfEmployees(numberOfEmployees);
+    setManagerId(managerId);
 }
 
 Project::~Project() {
@@ -82,12 +94,29 @@ void Project::printProjectInfo() const {
     std::cout << " Number of employees: "
         << getNumberOfEmployees() << std::endl;
     std::cout << " Budget: " << getBudget() << std::endl;
+    if (getManagerId() != -1) {
+        std::cout << " Manager ID: " << getManagerId() << std::endl;
+    } else {
+        std::cout << " No manager" << std::endl;
+    }
+}
+
+int Project::getManagerId() const {
+    return managerID;
+}
+
+void Project::setManagerId(int managerId) {
+    if (managerId < 0) {
+        throw InvalidProjectManagerIDException("Project's manager ID must not be negative");
+    } else {
+        this->managerID = managerId;
+    }
+}
+
+void Project::clearManagerId() {
+    this->managerID = -1;
 }
 
 bool Project::hasManager() const {
-    return this->isManaged;
-}
-
-void Project::setHasManager(bool isManaged) {
-    this->isManaged = isManaged;
+    return getManagerId() != -1;
 }
