@@ -1,7 +1,7 @@
-#define PAYMENT_PER_PERSON_IN_PROJECT 6000
+#define PAYMENT_PER_PERSON_IN_PROJECT 7000
 #define BONUS_FOR_BIG_PROJECT 50000
 #define BIG_PROJECT_CRITERIA 9
-#define SENIOR_MANAGER_PART 0.20
+#define SENIOR_MANAGER_PART 0.35
 
 #include <cmath>
 #include <iostream>
@@ -10,19 +10,23 @@
 SeniorManager::SeniorManager(
         int id,
         const std::string& name
-) : ProjectManager(id, name) {}
+) : ProjectManager(id, name) {
+    setPosition(Position::SENIOR_MANAGER);
+}
 
 SeniorManager::SeniorManager(
         int id,
         const std::string& name,
         int workTime
-) : ProjectManager(id, name, workTime) {}
+) : ProjectManager(id, name, workTime) {
+    setPosition(Position::SENIOR_MANAGER);
+}
 
 SeniorManager::SeniorManager(
         int id,
         const std::string& name,
         std::vector<Project*>& projects
-) : ProjectManager(id, name) {
+) : SeniorManager(id, name) {
     // check vector for unavailable projects
     std::vector<Project*> checkedProjects;
     for (int i = 0; i < projects.size(); i++) {
@@ -45,8 +49,7 @@ SeniorManager::SeniorManager(
         const std::string& name,
         int workTime,
         std::vector<Project*>& projects
-) : ProjectManager(id, name) {
-    setPosition(Position::PROJECT_MANAGER);
+) : SeniorManager(id, name) {
     setWorkTime(workTime);
     // check vector for unavailable projects
     std::vector<Project*> checkedProjects;
@@ -120,12 +123,11 @@ void SeniorManager::printInfo() {
     std::cout << " Position: " << getPosition() << std::endl;
     std::cout << " Work time: " << getWorkTime() << std::endl;
     std::cout << " Payment: " << getPayment() << std::endl;
-    std::cout << " Projects: " << getPayment() << std::endl;
+    std::cout << " Projects: " << std::endl;
     if (!hasProject()) {
-        std::cout << "  No projects" << std::endl;
+        std::cout << "No projects" << std::endl;
     } else {
         for (Project* project : projects) {
-            std::cout << "  ";
             project->printProjectInfo();
         }
     }

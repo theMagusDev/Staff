@@ -32,6 +32,13 @@ Employee::Employee(
     setWorkTime(worktime);
 }
 
+Employee::Employee(int id, const std::string& name, int worktime) {
+    this->name = name;
+    setId(id);
+    setWorkTime(worktime);
+    setPosition(Position::UNINITIALIZED);
+}
+
 Employee::~Employee() {
     occupiedIDs.erase(this->id);
     this->id = -1;
@@ -135,10 +142,4 @@ bool Employee::isNameCorrect(const std::string &str) {
 
 int Employee::getWorkTime() const {
     return this->worktime;
-}
-
-Employee::Employee(int id, const std::string &name, int worktime) {
-    setId(id);
-    setWorkTime(worktime);
-    setPosition(Position::UNINITIALIZED);
 }

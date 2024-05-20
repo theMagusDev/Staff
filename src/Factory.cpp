@@ -16,6 +16,7 @@ Project* findProject(std::vector<Project*> projects, int id) {
         }
     }
 
+    std::cout << "findProject returns nullptr" << std::endl;
     return nullptr;
 }
 
@@ -75,9 +76,15 @@ std::vector<Employee*> Factory::makeStaff() {
             numberOfEmployees = atoi(buffer.c_str());
             getline(projectsData, buffer);
             managerID = atoi(buffer.c_str());
-            projects.push_back(
-                new Project(projectID, budget, numberOfEmployees, managerID)
-            );
+            if (managerID != -1) {
+                projects.push_back(
+                        new Project(projectID, budget, numberOfEmployees, managerID)
+                );
+            } else {
+                projects.push_back(
+                        new Project(projectID, budget, numberOfEmployees)
+                );
+            }
         }
     }
 
@@ -164,13 +171,13 @@ std::vector<Employee*> Factory::makeStaff() {
                 case Position::PROJECT_MANAGER:
                     getline(staffData, buffer);
                     projectInvolvedID = atoi(buffer.c_str());
-                    staff.push_back(
-                            new ProjectManager(
-                                    id,
-                                    name,
-                                    workTime,
-                                    findProject(projects, projectInvolvedID))
-                    );
+                        staff.push_back(
+                                new ProjectManager(
+                                        id,
+                                        name,
+                                        workTime,
+                                        findProject(projects, projectInvolvedID))
+                        );
                     break;
                 case Position::SENIOR_MANAGER:
                     getline(staffData, buffer);
