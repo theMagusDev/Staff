@@ -46,7 +46,7 @@ Position determinePosition(const std::string& strPosition) {
     }
 }
 
-std::vector<Employee *> Factory::makeStaff() {
+std::vector<Employee*> Factory::makeStaff() {
     std::ifstream projectsData("../bd/projects_info.txt");
     std::vector<Project*> projects;
     int projectID = -1;

@@ -2,6 +2,7 @@
 #define STAFF_FACTORY_H
 
 #include <vector>
+#include <map>
 #include "Employee.h"
 
 class Factory {
