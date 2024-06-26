@@ -18,8 +18,8 @@ enum class Position {
 class Employee {
  public:
     Employee(int id, const std::string& name, Position& position);
-    Employee(int id, const std::string &name, Position& position, int worktime);
-    Employee(int id, const std::string &name, int worktime = 0);
+    Employee(int id, const std::string& name, Position& position, int worktime);
+    Employee(int id, const std::string& name, int worktime = 0);
     ~Employee();
 
     int getId() const;
