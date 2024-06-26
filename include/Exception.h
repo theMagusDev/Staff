@@ -7,7 +7,7 @@
 
 class CustomException : std::exception {
  public:
-    explicit CustomException(std::string message);
+    explicit CustomException(const char* message);
     const char* what() const noexcept override {
         return message.c_str();
     }
@@ -18,104 +18,104 @@ class CustomException : std::exception {
 
 class EmployeeException : public CustomException {
  public:
-    explicit EmployeeException(std::string message) :
-            CustomException(std::move(message)) {}
+    explicit EmployeeException(const char* message) :
+            CustomException(message) {}
 };
 class InvalidNameException : public EmployeeException {
  public:
-    explicit InvalidNameException(std::string message) :
-            EmployeeException(std::move(message)) {}
+    explicit InvalidNameException(const char* message) :
+            EmployeeException(message) {}
 };
 class InvalidEmployeeIDException : public EmployeeException {
 public:
-    explicit InvalidEmployeeIDException(std::string message) :
-            EmployeeException(std::move(message)) {}
+    explicit InvalidEmployeeIDException(const char* message) :
+            EmployeeException(message) {}
 };
 class InvalidWorktimeException : public EmployeeException {
  public:
-    explicit InvalidWorktimeException(std::string message) :
-            EmployeeException(std::move(message)) {}
+    explicit InvalidWorktimeException(const char* message) :
+            EmployeeException(message) {}
 };
 
 class ProjectException : public CustomException {
  public:
-    explicit ProjectException(std::string message) :
-            CustomException(std::move(message)) {}
+    explicit ProjectException(const char* message) :
+            CustomException(message) {}
 };
 class InvalidProjectIDException : public ProjectException {
  public:
-    explicit InvalidProjectIDException(std::string message) :
-            ProjectException(std::move(message)) {}
+    explicit InvalidProjectIDException(const char* message) :
+            ProjectException(message) {}
 };
 class InvalidProjectBudgetException : public ProjectException {
  public:
-    explicit InvalidProjectBudgetException(std::string message) :
-        ProjectException(std::move(message)) {}
+    explicit InvalidProjectBudgetException(const char* message) :
+        ProjectException(message) {}
 };
 class InvalidNumberOfEmployeesException : public ProjectException {
  public:
-    explicit InvalidNumberOfEmployeesException(std::string message) :
-        ProjectException(std::move(message)) {}
+    explicit InvalidNumberOfEmployeesException(const char* message) :
+        ProjectException(message) {}
 };
 class InvalidProjectManagerIDException : public ProjectException {
  public:
-    explicit InvalidProjectManagerIDException(std::string message) :
-            ProjectException(std::move(message)) {}
+    explicit InvalidProjectManagerIDException(const char* message) :
+            ProjectException(message) {}
 };
 
 class PersonalException : public CustomException {
  public:
-    explicit PersonalException(std::string message) :
-            CustomException(std::move(message)) {}
+    explicit PersonalException(const char* message) :
+            CustomException(message) {}
 };
 class InvalidHourlyRateException : public PersonalException {
  public:
-    explicit InvalidHourlyRateException(std::string message) :
-            PersonalException(std::move(message)) {};
+    explicit InvalidHourlyRateException(const char* message) :
+            PersonalException(message) {};
 };
 
 class DriverException : public PersonalException {
  public:
-    explicit DriverException(std::string message) :
-            PersonalException(std::move(message)) {}
+    explicit DriverException(const char* message) :
+            PersonalException(message) {}
 };
 class InvalidNightHoursException : public DriverException {
  public:
-    explicit InvalidNightHoursException(std::string message) :
-            DriverException(std::move(message)) {}
+    explicit InvalidNightHoursException(const char* message) :
+            DriverException(message) {}
 };
 
 class EngineerException : public PersonalException {
  public:
-    explicit EngineerException(std::string message) :
-            PersonalException(std::move(message)) {}
+    explicit EngineerException(const char* message) :
+            PersonalException(message) {}
 };
 class TesterException : public EngineerException {
  public:
-    explicit TesterException(std::string message) :
-            EngineerException(std::move(message)) {}
+    explicit TesterException(const char* message) :
+            EngineerException(message) {}
 };
 class InvalidFoundBugsValueException : public TesterException {
  public:
-    explicit InvalidFoundBugsValueException(std::string message) :
-            TesterException(std::move(message)) {};
+    explicit InvalidFoundBugsValueException(const char* message) :
+            TesterException(message) {};
 };
 
 class ProgrammerException : public EngineerException {
  public:
-    explicit ProgrammerException(std::string message) :
-            EngineerException(std::move(message)) {}
+    explicit ProgrammerException(const char* message) :
+            EngineerException(message) {}
 };
 class InvalidCodeLinesWrittenValueException : public ProgrammerException {
  public:
-    explicit InvalidCodeLinesWrittenValueException(std::string message) :
-            ProgrammerException(std::move(message)) {};
+    explicit InvalidCodeLinesWrittenValueException(const char* message) :
+            ProgrammerException(message) {};
 };
 
 class FileIOException : public CustomException {
  public:
-    explicit FileIOException(std::string message) :
-            CustomException(std::move(message)) {};
+    explicit FileIOException(const char* message) :
+            CustomException(message) {};
 };
 
 #endif //STAFF_EXCEPTION_H
