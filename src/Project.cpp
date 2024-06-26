@@ -46,17 +46,17 @@ void Project::setId(int newId) {
         Project::occupiedIDs.insert(newId);
     } else {
         if (IDisOccupied) {
-            throw InvalidProjectIDException(
+            throw InvalidProjectIDException((
                 "Exception in project "
                 + std::to_string( getId())
                 + ": duplicated project ID"
-            );
+            ).c_str());
         } else {
-            throw InvalidProjectIDException(
+            throw InvalidProjectIDException((
                 "Exception in project "
                 + std::to_string(getId())
                 + ": project ID mustn't be negative"
-            );
+            ).c_str());
         }
     }
 }

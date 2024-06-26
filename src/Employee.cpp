@@ -17,9 +17,9 @@ Employee::Employee(
     if (Employee::isNameCorrect(name)) {
         this->name = name;
     } else {
-        throw InvalidNameException(
+        throw InvalidNameException((
                 "Invalid name! Only English letters and '-' are allowed; "
-                "0 < length <= 34. Got " + name);
+                "0 < length <= 34. Got " + name).c_str());
     }
 }
 
@@ -106,9 +106,13 @@ void Employee::setId(int newId) {
         Employee::occupiedIDs.insert(newId);
     } else {
         if (IDisOccupied) {
-            throw InvalidEmployeeIDException("Exception in employee " + getName() + ": duplicated employee ID");
+            throw InvalidEmployeeIDException((
+                    "Exception in employee " + getName()
+                    + ": duplicated employee ID").c_str());
         } else {
-            throw InvalidEmployeeIDException("Exception in employee " + getName() + ": employee ID mustn't be negative");
+            throw InvalidEmployeeIDException((
+                    "Exception in employee " + getName()
+                    + ": employee ID mustn't be negative").c_str());
         }
     }
 }
